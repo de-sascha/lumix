@@ -26,12 +26,15 @@
 - [ ] HDMI Info Display: OFF
 
 ### OBS & Stream
-- [ ] OBS gestartet, DeckLink-Signal sichtbar
-- [ ] Encoder: NVENC H.264, CBR 8-12 Mbps
-- [ ] Stream-Key aktuell (YouTube/Platform)
-- [ ] Lokale Aufnahme aktiviert (MKV)
-- [ ] Audio-Signal vorhanden und Pegel korrekt
+- [ ] OBS gestartet, DeckLink-Signal sichtbar (PTZ via SDI oder S5IIX via HDMI)
+- [ ] NDI-Source "BEAMERPC (SongBeamer)" verbunden (grüner Indikator)
+- [ ] Encoder: NVENC AV1, 10 Mbps, p6
+- [ ] Stream-Key aktuell (YouTube Studio)
+- [ ] Lokale Aufnahme aktiviert (Fragmented MP4, HEVC)
+- [ ] Audio "Mischpult" (Scarlett 2i2): Pegel korrekt, **UNMUTED**
+- [ ] Audio Sync Offset: +60 ms
 - [ ] Internet Speed-Test: Upload stabil >20 Mbit
+- [ ] Studio Mode aktiv (Preview/Program)
 
 ### Test-Run
 - [ ] 5-Minuten Test-Stream starten und auf Handy prüfen
@@ -186,6 +189,8 @@ Aus dem Praxisbuch (Sänger):
 5. **Zone-AF mit Gesichtserkennung** = zuverlässiger Fokus auf den Prediger
 6. **Standard/Natural Bildstil** = stream-ready ohne LUT
 7. **Lüfter AUTO2 + Temp-Management HIGH** = thermische Sicherheit
-8. **CBR 8-12 Mbps über LAN** = stabiler, qualitativ hochwertiger Stream
+8. **AV1 bei 10 Mbps über LAN** = stabiler, qualitativ hochwertiger Stream
 9. **Test-Run vor jedem Gottesdienst** = Probleme frühzeitig erkennen
-10. **Lokale Aufnahme in OBS als Backup** = immer eine Sicherheitskopie
+10. **Lokale Aufnahme (Fragmented MP4) als Backup** = immer eine Sicherheitskopie
+11. **Audio-Sync +60 ms** = kompensiert Video-Processing-Delay (Scarlett 2i2)
+12. **NDI als primärer Präsentations-Pfad** = geringere Latenz, höhere Qualität als USB-Capture

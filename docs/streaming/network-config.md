@@ -1,18 +1,79 @@
 # Netzwerk & Streaming-Architektur
 
-## Aktuelle Netzwerk-Infrastruktur
+## Aktuelle Netzwerk-Infrastruktur (Hosanna) `[VERIFIZIERT]`
 
 | Parameter | Wert |
 |---|---|
 | ISP | Vodafone Cable |
 | Download | 1 Gbit/s |
 | Upload | 50 Mbit/s |
-| LAN | Gigabit Ethernet (Switch vorhanden) |
+| LAN | Gigabit Ethernet (Switch im Technik-Raum Rack) |
 | Anbindung OBS-PC | Kabel (Gigabit LAN) |
+| Anbindung Beamer PC | Kabel (Gigabit LAN, gleicher Switch) |
+| IP-Konfiguration | Statisch für alle A/V-Geräte (kein DHCP) |
+
+### Netzwerk-Topologie
+
+```
+┌─────────────────────────────────────────────────────┐
+│                  Network Switch                       │
+│               (Technik-Raum Rack)                     │
+└──┬─────────┬──────────┬──────────┬──────────┬───────┘
+   │         │          │          │          │
+   ▼         ▼          ▼          ▼          ▼
+Beamer PC  Livestream  PTZ Cam   RP60       Projektor
+           PC          AW-HE40   Controller  (PJLink)
+```
+
+### Dienste im Netzwerk
+
+| Dienst | Port | Protokoll | Gerät |
+|---|---|---|---|
+| SongBeamer Remote | 19150 | TCP | Beamer PC |
+| OBS WebSocket | 4455 | TCP | Livestream PC |
+| PTZ Camera Control | 80 | HTTP/CGI | AW-HE40HW |
+| PTZ Camera RTSP | 554 | RTSP | AW-HE40HW |
+| Projektor PJLink | 4352 | TCP | TT-BW730 |
+| NDI Discovery | 5353 (mDNS) | UDP | Alle NDI-Geräte |
+
+---
+
+## NDI-Konfiguration (Hosanna Praxis) `[VERIFIZIERT]`
+
+NDI wird als **primärer Präsentations-Pfad** verwendet:
+
+| Einstellung | Wert |
+|---|---|
+| Sender | SongBeamer auf Beamer PC |
+| NDI Source Name | "BEAMERPC (SongBeamer)" |
+| Empfänger | DistroAV Plugin v6.2.1 in OBS |
+| Bandwidth Mode | Highest (volle Qualität, keine Kompression) |
+| Latency Mode | Low |
+| Hardware Acceleration | Enabled (RTX 4060) |
+| Sync Mode | NDI Timestamp |
+| YUV Range | Full |
+| YUV Colorspace | BT.709 |
+| NDI SDK Version | 6.3.2 |
+
+### NDI-Voraussetzungen
+
+- Beide PCs im gleichen Subnet
+- Gigabit-Ethernet (NDI Highest braucht ~100-150 Mbit für 1080p60)
+- Windows-Firewall: NDI-Regeln müssen erlaubt sein
+- DistroAV Plugin ersetzt das ältere obs-ndi Plugin
+
+### NDI Output (OBS → Netzwerk)
+
+OBS sendet zusätzlich das Program-Signal als NDI ins LAN:
+
+| Einstellung | Wert |
+|---|---|
+| Output Name | "HDMI Kamera" |
+| Purpose | Livestream-Feed für andere Geräte im Netzwerk |
 
 ## Streaming-Optionen mit der S5IIX
 
-### Option A: HDMI → DeckLink → OBS (AKTUELL)
+### Option A: HDMI → DeckLink → OBS (EMPFOHLEN für S5IIX)
 
 ```
 ┌─────────┐    HDMI     ┌──────────────┐    PCIe    ┌─────────┐
@@ -23,6 +84,7 @@
 
 **Vorteile:** Höchste Qualität, geringe Latenz, 4K 4:2:2 10-Bit
 **Nachteile:** Kabel-basiert, max. Kabelstrecke 15m (aktives HDMI)
+**Status:** DeckLink ist aktuell für PTZ-SDI belegt — Umschaltung auf HDMI nötig für S5IIX
 
 ### Option B: Native Streaming-Funktion der S5IIX (RTMP/RTMPS)
 
@@ -118,6 +180,19 @@ Wenn eine zweite Kamera hinzukommt:
 | USB Capture Card (Cam Link) | ~130€ | Gut (1080p) | Niedrig |
 
 **Empfehlung für Multi-Cam:** Zweite DeckLink oder USB-Capture-Card für einfachste Integration.
+
+## Signal-Formate (Hosanna Praxis) `[VERIFIZIERT]`
+
+| Pfad | Format | Auflösung | Framerate |
+|---|---|---|---|
+| Beamer PC → FeinTech Matrix | HDMI 2.0 | 1920×1080 | 60 Hz |
+| Matrix → Mirabox | HDMI 2.0 | 1920×1080 | 60 Hz |
+| Mirabox → Projektor | HDMI (Passthrough) | 1920×1080 | 60 Hz |
+| Mirabox → Livestream PC | USB 3.0 | 1920×1080 | 30 fps (Capture-Limit) |
+| Beamer PC → NDI | Netzwerk (Gigabit) | 1920×1080 | 60 fps |
+| PTZ Camera → DeckLink | 3G-SDI | 1920×1080 | 59.94i / 29.97p |
+| S5IIX → DeckLink (geplant) | HDMI 2.0 | 3840×2160 / 1920×1080 | 25p (PAL) |
+| OBS → YouTube | RTMPS | 1920×1080 | 30 fps (AV1, 10 Mbps) |
 
 ## Bandbreiten-Kalkulation
 

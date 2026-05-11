@@ -18,15 +18,16 @@ Umfassende Wissensbasis für den Einsatz der Panasonic Lumix DC-S5IIX im Kirchen
 - [HDMI-Output](docs/camera/hdmi-output.md) — Clean HDMI, 4K vs 1080p, Farbtiefe, Kabel-Empfehlungen
 
 ### OBS Studio & Capture
-- [Encoder-Einstellungen (NVENC)](docs/obs/encoder-settings.md) — H.264/HEVC, CBR-Bitrate, Szenen-Konfiguration, Bandbreiten-Planung
-- [Blackmagic DeckLink Setup](docs/obs/blackmagic-setup.md) — Desktop Video Konfiguration, OBS-Integration, Troubleshooting
+- [Encoder-Einstellungen (NVENC AV1)](docs/obs/encoder-settings.md) — AV1 10Mbps p6, Szenen-Konfiguration, Bandbreiten-Planung
+- [Blackmagic DeckLink Setup](docs/obs/blackmagic-setup.md) — Desktop Video Konfiguration, SDI/HDMI, OBS-Integration
+- [Szenen-Konfiguration (Hosanna)](docs/obs/scene-config.md) — Signal-Flow, Scene Collection, NDI-Workflow, S5IIX-Integration
 
 ### Objektive
 - [Samyang AF 35-150mm F2-2.8](docs/lenses/samyang-35-150.md) — Hauptobjektiv, AF-Verhalten, optimale Einstellungen, Einschränkungen
 - [Panasonic Lumix S 18-40mm F4.5-6.3](docs/lenses/lumix-18-40.md) — Kit-Objektiv, Lichtschwäche-Analyse, nur für Weitwinkel-Backup
 
 ### Streaming & Netzwerk
-- [Netzwerk-Architektur](docs/streaming/network-config.md) — LAN-Setup, HDMI vs NDI vs SRT, Multi-Cam-Planung, Bandbreiten-Kalkulation
+- [Netzwerk-Architektur & NDI](docs/streaming/network-config.md) — LAN-Setup, NDI-Praxis, Signal-Formate, Multi-Cam-Planung
 - [Best Practices Langzeit-Streaming](docs/streaming/best-practices.md) — Vor-Ort-Checkliste, Belichtungsstrategie, Dual Native ISO, Audio, Wartung
 
 ---
@@ -35,13 +36,17 @@ Umfassende Wissensbasis für den Einsatz der Panasonic Lumix DC-S5IIX im Kirchen
 
 | Komponente | Detail |
 |---|---|
-| Kamera | Panasonic Lumix DC-S5IIX (Firmware 2.6, Dez. 2025) |
-| Capture Card | Blackmagic DeckLink Mini Recorder 4K |
-| Software | OBS Studio (Windows 11) |
+| Kamera (neu) | Panasonic Lumix DC-S5IIX (Firmware 2.6, Dez. 2025) |
+| Kamera (aktuell) | Panasonic AW-HE40HW PTZ (SDI → DeckLink) |
+| Capture Card | Blackmagic DeckLink Mini Recorder 4K (SDI für PTZ, HDMI für S5IIX) |
+| Software | OBS Studio 32.1.2 (Windows 11 Pro) |
+| Encoder | NVIDIA NVENC AV1 (RTX 4060, 10 Mbps, p6) |
+| Audio | Focusrite Scarlett 2i2 USB (WASAPI, 48 kHz, +60 ms Offset) |
+| NDI | DistroAV v6.2.1 — Beamer PC (SongBeamer) → OBS |
 | Objektiv 1 | Samyang AF 35-150mm F2-2.8 (L-Mount) |
 | Objektiv 2 | Panasonic Lumix S 18-40mm F4.5-6.3 (Kit) |
 | Netzwerk | Gigabit LAN, Vodafone Cable (1Gb/50Mbit Up) |
-| Einsatz | Kirchengottesdienste (1-3h, variable Beleuchtung) |
+| Einsatz | Kirchengottesdienste Hosanna (1-3h, variable Beleuchtung) |
 
 ## Dokumentationsstruktur
 
@@ -55,9 +60,9 @@ docs/
 │   ├── af-settings.md             # Autofokus-Konfiguration für Kirche
 │   └── hdmi-output.md             # HDMI-Clean-Output-Einstellungen
 ├── obs/
-│   ├── encoder-settings.md        # NVENC-Optimierung
-│   ├── blackmagic-setup.md        # DeckLink Desktop Video Setup
-│   └── scene-config.md            # Szenen-Konfiguration
+│   ├── encoder-settings.md        # NVENC AV1 Optimierung (Hosanna Praxis)
+│   ├── blackmagic-setup.md        # DeckLink Desktop Video Setup (SDI/HDMI)
+│   └── scene-config.md            # Szenen, Signal-Flow, NDI, S5IIX-Integration
 ├── lenses/
 │   ├── samyang-35-150.md          # Samyang AF 35-150mm F2-2.8
 │   └── lumix-18-40.md             # Panasonic S 18-40mm Kit

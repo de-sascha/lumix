@@ -41,11 +41,13 @@ Bildstil:                Standard
 
 ### 3. OBS & Stream vorbereiten (10 Min.)
 
-1. OBS starten
-2. DeckLink-Quelle prüfen (Bild sichtbar?)
-3. Audio-Quelle prüfen (Pegel vom Mischpult?)
-4. Stream-Key eintragen (falls neu)
-5. Lokale Aufnahme aktivieren
+1. OBS starten (Scene Collection: "Hosanna Gottesdienst")
+2. DeckLink-Quelle prüfen ("Panasonic CAM" — Bild sichtbar?)
+3. NDI-Source prüfen ("Beamer NDI Texte" — SongBeamer verbunden?)
+4. Audio "Mischpult" (Scarlett 2i2): Pegel vom Mischpult korrekt? **UNMUTE!**
+5. Stream-Key prüfen (YouTube Studio, falls erneuert)
+6. Lokale Aufnahme aktivieren (Fragmented MP4)
+7. Studio Mode aktiv? (Preview/Program)
 
 ### 4. Test-Run (10 Min.)
 
