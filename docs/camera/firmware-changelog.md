@@ -1,116 +1,133 @@
 # Firmware-Changelog: Panasonic Lumix DC-S5IIX / DC-S5II
 
-**Aktuell installiert (S5IIX):** Version 2.6 (23. Dezember 2025)
+**Aktuell installiert (S5IIX):** **Version 2.7** (10. März 2026) — eingespielt am 2026-05-20
+**Neueste verfügbare Version (S5IIX):** Version 2.7 — aktuell ✅
 
-> **WICHTIGER HINWEIS:** Die Online-Dokumentation von Panasonic (für DC-S5M2/S5M2X) zeigt
-> Firmware-Versionen bis 3.7. Die S5II und S5IIX haben **unterschiedliche Versionsnummern**
-> für das gleiche Feature-Set. Die S5II-Versionen (1.1, 2.0, 2.2, 3.0, 3.1, 3.2, 3.4, 3.7)
-> entsprechen NICHT 1:1 den S5IIX-Versionen.
->
-> **Die S5IIX Firmware 2.6 enthält möglicherweise Features, die in der S5II als Version 3.x gelistet sind.**
-> Dies muss durch direkte Prüfung am Gerät verifiziert werden.
+Quelle: https://av.jpn.support.panasonic.com/support/global/cs/dsc/download/ff/dl/s5m2x.html (abgerufen 2026-05-20)
 
-> Einträge mit `[VERIFIZIERT]` — anhand Panasonic Online-Dokumentation oder Gerät bestätigt.
-> Einträge mit `[ONLINE-MANUAL]` — aus dem offiziellen Online-Benutzerhandbuch extrahiert.
+> Einträge mit `[VERIFIZIERT]` — anhand offizieller Panasonic Update-Seite oder Gerät bestätigt.
 > Einträge mit `[TRAINING-WISSEN]` — basieren auf dem Kenntnisstand bis Anfang 2025.
 
 ---
 
-## Firmware-Historie (S5II Online-Manual Versionen) `[ONLINE-MANUAL]`
+## S5IIX-spezifische Firmware-Historie `[VERIFIZIERT via Panasonic Support 2026-05-20]`
 
-Die folgende Liste stammt aus dem offiziellen deutschen Online-Handbuch der DC-S5M2-Serie:
+### Version 2.7 — 10. März 2026 `[VERIFIZIERT — installiert seit 2026-05-20]`
 
-### Version 3.7 (neueste im Online-Manual)
+- **Unterstützung für Panasonic-Mikrofon DMW-DMS1**
+- Kompatibel mit den neuen Funktionen der **LUMIX Flow App (Ver. 1.5+)**
+- Verbesserte Betriebsstabilität
+- Datei: `S5m2XV27.zip` (157.760.717 Bytes)
+- Lokale Kopie: `firmware/S5m2XV27.zip`
 
-- **Digitales Richtmikrofon DMW-DMS1** Unterstützung (optionales Zubehör)
-- Änderungen bei anderen Funktionen
+### Version 2.6 — 23. Dezember 2025 `[VERIFIZIERT]`
 
-### Version 3.4
+- Bildecken-Bug bei aktiver Bildstabilisierung behoben (Teile der Bildecken konnten fehlen, wenn die Kamera bewegt wurde)
+- Bug behoben: Aufgenommene Videos konnten je nach SD-Karte Rauschen enthalten
 
-- **LUMIX Flow** Integration (Verknüpfung mit LUMIX Flow App)
-- **Fokusring-Funktion verbessert**
-- **Verschlusszeitbegrenzer** hinzugefügt (neues Menü-Item)
-- **Proxy-Aufzeichnung verbessert**
-- Ergänzungen/Änderungen bei anderen Funktionen
+### Version 2.5 — 18. November 2025 `[VERIFIZIERT]`
 
-### Version 3.2
+- Bug behoben: Videoaufnahme stoppte, wenn die WLAN-Verbindung zu LUMIX Flow oder LUMIX Lab unterbrochen wurde
+- Bug behoben: Kreisförmiges Rauschen auf dem Monitor, wenn APS-C-Linsen ohne Ausschalten der Kamera entfernt wurden
 
-- **Bildmarkierung verbessert**
-- **Automatische Erkennung (AF) verbessert**
-- **[XS] Bildgröße** hinzugefügt
-- **[MP4(Lite)]** als Aufnahme-Dateiformat hinzugefügt
-- **Zoom-Funktionalität** erweitert
-- **Sicherheitsverbesserungen**
-- **LUMIX Lab** neue Funktionen
-- Menü-Ergänzungen
+### Version 2.4 — 20. Oktober 2025 `[VERIFIZIERT]` — Großes Feature-Update
 
-### Version 3.1
+- **Verbesserte Kompatibilität**
+  - Bluetooth-Kopplung mit DJI-Gimbals hinzugefügt (keine Garantie aller Funktionen)
+  - Verbesserte Kompatibilität mit OM Digital Solutions Blitzgeräten
+  - Verbesserte Kompatibilität mit Wechselobjektiv S-R100500 und Telekonvertern (DMW-STC14/STC20)
+- **LUMIX Flow ab v1.3 unterstützt**
+  - Externer Monitor: LUTs auf Live View anwendbar
+  - Externer Monitor: mehrere Frame-Marker gleichzeitig anzeigbar
+  - Externer Monitor: Fokusrahmen anzeigbar
+  - ⚠ Bei drahtloser Verbindung (Wi-Fi) stoppt die Videoaufnahme, wenn Bluetooth oder die App geschlossen wird → für Streaming USB-Kabelverbindung nutzen
+- **Erweiterte Fokusring-Bedienung**
+  - Fokusring als Control Ring nutzbar (Tastenfunktionen zuweisbar) — kompatibles Objektiv erforderlich
+  - Drehrichtung wählbar (im/gegen Uhrzeigersinn)
+- **Neue Video-Funktion**
+  - **Verschlusszeitbegrenzer** im Video-Menü hinzugefügt
+- **Weitere Verbesserungen**
+  - Konstante Vorschau bei Blitzbenutzung
+  - Schnellerer Einschaltvorgang
+  - 17:9 Seitenverhältnis für Proxy-Videos
+  - ISO-Steuerung bei Blitz geändert
+  - Blende von **F45 bis F90** einstellbar (L-Mount-Standard)
+  - Gemeinsame Einträge im "My Menu" werden jetzt in Foto- und Video-Modus gespiegelt
 
-- **Bildstil-Funktionalität** geändert
-- **Echtzeit-LUT** Funktion verbessert
-- **LUT-Bibliothek** verbessert
-- **RAW-Verarbeitung** verbessert
-- **LUMIX Lab** Anbindung (neue Funktion)
-- **Wi-Fi Frequenzbänder** Konfiguration hinzugefügt
-- Ergänzungen/Änderungen bei anderen Funktionen
+### Version 2.3 — 15. Juli 2025 `[VERIFIZIERT]`
 
-### Version 3.0
+- Sicherheits-Update
+- Verbesserte Betriebsstabilität
+- Hinweis: LUMIX Tether muss auf Ver. 2.10+ aktualisiert werden
 
-Großes Feature-Update:
-- **Proxy-Video-Aufnahmen** Funktion hinzugefügt
-- **Frame.io Camera to Cloud** Kompatibilität
-- **SH Pre-Burst-Aufnahmen** Funktion hinzugefügt
-- **Automatische Erkennung (AF)** verbessert
-- **Bildstabilisator** verbessert
-- Ergänzungen/Änderungen bei anderen Funktionen
+### Version 2.2 — 23. Januar 2025 `[VERIFIZIERT]` — Großes Feature-Update
 
-### Version 2.2
+- **Erweiterte Motiverkennung**
+  - [FLUGZEUG] und [ZUG] zu den Erkennungsmodi hinzugefügt
+  - [Zielbereich] für [AUTO] und [MOTORRAD] hinzugefügt
+- **Mehrere Frame-Marker gleichzeitig anzeigbar** (bis zu 3)
+- **Crop Zoom** hinzugefügt (zentraler Bildbereich, ohne Qualitätsverlust)
+- **Hybrid Zoom** hinzugefügt (optisch + elektronisch nahtlos kombiniert)
+- **MP4(Lite)** als Aufnahmeformat — 3.8K (3840x2560) 29.97p 50Mbps
+- **Bildgröße [XS]** hinzugefügt (kleinere Dateigröße)
+- **LUMIX Lab v1.3+ Features:** Remote Shooting, Shutter Remote, Wireless IP Streaming, Bildauswahl an der Kamera für Transfer
+- ⚠ **Funktionen entfernt — kritisch für Streaming-Setup:**
+  - **RTMP-Streaming entfernt (nur EU-Modelle!)**
+  - **WLAN-Bildtransfer zum PC entfernt (nur EU-Modelle!)**
+  - Wired LAN Streaming (RTP/RTSP) komplett entfernt
+  - Wi-Fi-Direktverbindung erfordert immer Passwort-Authentifizierung ([Wi-Fi-Passwort]-Menü entfernt)
+  - TKIP-Verschlüsselung nicht mehr unterstützt
+  - "Keine Verschlüsselung"-Option für AP-Verbindungen entfernt
 
-- **AF-Punkt-Vergrößerung** für Fotoaufnahmen hinzugefügt
-  - Funktioniert in AF-Modi 1-Feld+, 1-Feld und Punktfokussierung
-  - Auf Fn-Taste registrierbar
-- **Hochauflösender Modus** erweitert
-- **MF-Lupe-Vergrößerungseinstellung** hinzugefügt
-- Ergänzungen/Änderungen bei anderen Funktionen
+### Version 2.1 — 9. Oktober 2024 `[VERIFIZIERT]`
 
-### Version 2.0
+- **Neuer Photo Style: [LEICA Monochrome]**
+- **LUMIX Lab Smartphone-App-Kompatibilität**
+- **Panasonic XLR-Mikrofon-Adapter DMW-XLR2** unterstützt (32-bit Float **nicht** verfügbar bei diesem Modell)
+- **5GHz-Wi-Fi-Frequenzband** als Option hinzugefügt (regionale Einschränkungen draußen beachten)
+- [REAL TIME LUT] kann auf Fn-Taste gelegt werden
+- Pop-up-Meldung bei einklappbaren Panasonic-Objektiven
 
-- **AFC Live-View** hinzugefügt (Setup-Menü > Monitor/Display)
-  - Standard: SPEED PRIORITY
+### Version 2.0 — 22. April 2024 `[VERIFIZIERT]`
 
-### Version 1.1
+- **Frame.io Camera to Cloud** Kompatibilität (Upload von Stills + Proxy-Videos via Wi-Fi)
+- **Proxy-Aufnahme** Funktion hinzugefügt (gleichzeitig mit Hauptvideo)
+- **[SH PRE]** hinzugefügt (Pre-Burst-Aufnahmen ab halbem Auslöserdruck)
+- **Verbesserte automatische Erkennung**
+  - Bessere Tracking- und Personenerkennungs-Performance
+  - [Zielbereich] und Augenerkennung für [TIER]
+  - [AUTO] und [MOTORRAD] zu Auto-Erkennung hinzugefügt
+- **Verbesserter Bildstabilisator**
+  - [HIGH]-Stufe für E-Stabilisierung (Video) bei Bewegung
+  - Perspektivverzerrungs-Korrektur bei Weitwinkel-Videos
+- Bug behoben: rötlich-violette Färbung bei Live View Composite
 
-- **AFC Live-View** hinzugefügt (erste Einführung)
-- Menü-Ergänzungen
+### Version 1.5 — 30. Januar 2024 `[VERIFIZIERT]`
 
----
+- Bug behoben: vertikale Linien bei JPEG-Aufnahmen mit i.Dynamic Range
 
-## S5IIX-spezifische Firmware-Historie `[TRAINING-WISSEN + VERIFIZIERT]`
+### Version 1.4 — 20. Dezember 2023 `[VERIFIZIERT]`
 
-### Version 2.6 — Dezember 2025 `[VERIFIZIERT via installierter Firmware]`
+- Verbesserte Stabilität bei einigen Speichergeräten
+- Bug behoben: horizontale Linien bei JPEG im SH Burst Modus
 
-- Stabilität und Performance-Verbesserungen
-- Sicherheitsupdates
-- **TODO:** Prüfen welche Features aus S5II v3.x hier enthalten sind
-  - [ ] Frame.io Camera to Cloud?
-  - [ ] Proxy-Video-Aufnahmen?
-  - [ ] SH Pre-Burst?
-  - [ ] MP4(Lite)?
-  - [ ] LUMIX Flow?
-  - [ ] Verschlusszeitbegrenzer?
-  - [ ] DMW-DMS1 Mikrofonunterstützung?
+### Version 1.3 — 24. Oktober 2023 `[VERIFIZIERT]`
 
-### Version 2.0 — ca. Mitte 2024 `[TRAINING-WISSEN]`
+- **[AF-Punkt-Lupe]** hinzugefügt (Vergrößerung der Fokusposition während AF)
+- **Hochauflösender Modus** erweitert: Verschlusszeit bis 8 Sek., [Long Exposure NR] nutzbar
+- **[Handheld High-Res]**-Modus hinzugefügt (max. 1 Sek. Verschlusszeit)
+- **MF-Lupe-Vergrößerung** bis ca. 20-fach einstellbar
+- Schnellere LCD/EVF-Umschaltung, bessere Sucher-Sicht zwischen Serienbild-Frames
 
-Großes Feature-Update:
-- **RAW-Video-Ausgabe über HDMI** an externe Rekorder (Atomos Ninja V/V+, Blackmagic Video Assist 5"/7" 12G HDR)
-- **Videoreparatur-Funktion** (Wiedergabemenü > Bild bearbeiten > Videoreparatur)
-  - Rettet beschädigte Videodateien nach Stromausfall/Kartenentfernung
-  - Erzeugt .mdt Dateien; MP4-Videos können NICHT repariert werden
-- **Apple ProRes RAW** und **Blackmagic RAW** Unterstützung (S5IIX nativ seit Launch)
-- S5II erhält ProRes RAW und BRAW nur mit kostenpflichtigem **Upgrade-Key DWW-SFU2** (200 EUR)
-- Erweiterte Aufnahmequalitäten: 5.9K, 4.1K und 3.5K Videos in RAW-Formaten
-- Verbesserter AF bei schwachem Licht
+### Version 1.2 — 22. August 2023 `[VERIFIZIERT]`
+
+- Bug behoben: Färbung von Motiven und deren Konturen unter bestimmten Bedingungen
+
+### Version 1.1 — 13. Juni 2023 `[VERIFIZIERT]`
+
+- Verbesserte V-Log-Bildqualität
+- Verbesserte Kompatibilität mit einigen SD-Karten
+- Verbesserte Betriebsstabilität
 
 ### Version 1.0 — Launch (Juni 2023) `[VERIFIZIERT]`
 
@@ -118,32 +135,38 @@ Großes Feature-Update:
 - Phase Hybrid AF (779 Messpunkte, 100% Sensorabdeckung)
 - Integrierter Lüfter für zeitlich unbegrenzte Videoaufnahme
 - Interne SSD-Aufzeichnung über USB-C
-- Direkte Streaming-Funktion (RTMP/RTMPS) — **nur S5IIX**
+- Direkte Streaming-Funktion (RTMP/RTMPS) — **nur S5IIX**, **in EU mit FW 2.2 entfernt**
 - 6K 30p, 5.9K 30p, C4K/4K 60p, 4K 120p (APS-C Crop)
 - Apple ProRes 422 HQ / 422 intern
 - V-Log / V-Gamut vorinstalliert (kein Upgrade nötig, anders als S5II)
 
 ---
 
-## PRÜFUNGSANLEITUNG: Features am Gerät verifizieren
+## In FW 2.7 enthaltene Features (verifiziert via offizieller Changelog-Historie)
 
-Um zu prüfen, welche Features in der installierten Firmware 2.6 vorhanden sind:
+Bei der installierten FW 2.7 sind alle Features bis einschließlich Version 2.7 enthalten:
 
-| Feature | Menüpfad zum Prüfen |
-|---|---|
-| Frame.io | Setup > EIN/AUS > Frame.io (falls vorhanden) |
-| Proxy-Video | Videomenü > Bildformat > Proxy-Aufnahme |
-| SH Pre-Burst | Foto > Auslösermodus > SH Pre-Burst |
-| MP4(Lite) | Videomenü > Bildformat > Aufnahme-Dateiformat |
-| LUMIX Flow | Setup > EIN/AUS > LUMIX Flow |
-| Verschlusszeitbegrenzer | Videomenü > Belichtung > Verschlusszeitbegrenzer |
-| DMW-DMS1 | Setup > EIN/AUS > Mikrofon (mit angeschlossenem DMW-DMS1) |
-| Echtzeit-LUT | Videomenü > Bildstil > Echtzeit-LUT |
-| LUT-Bibliothek | Videomenü > Bildstil > LUT-Bibliothek |
-| Wi-Fi Frequenzbänder | Setup > EIN/AUS > Wi-Fi > Frequenzband |
-| Bildgröße XS | Fotomenü > Bildgröße > XS |
-
-**Bitte am Gerät prüfen und dieses Dokument entsprechend aktualisieren!**
+| Feature | Eingeführt mit FW | In 2.7 vorhanden | Menüpfad |
+|---|---|---|---|
+| Frame.io Camera to Cloud | 2.0 | ✅ | Setup > EIN/AUS > Frame.io |
+| Proxy-Aufnahme | 2.0 | ✅ | Videomenü > Bildformat > Proxy-Aufnahme |
+| SH PRE (Pre-Burst) | 2.0 | ✅ | Foto > Auslösermodus > SH PRE |
+| LEICA Monochrome | 2.1 | ✅ | Photo Style |
+| LUMIX Lab Support | 2.1 | ✅ | App-seitig |
+| DMW-XLR2 (kein 32-bit Float) | 2.1 | ✅ | XLR-Adapter anschließen |
+| 5GHz Wi-Fi | 2.1 | ✅ | Setup > Wi-Fi > Frequenzband |
+| Crop Zoom | 2.2 | ✅ | Foto/Video-Menü |
+| Hybrid Zoom | 2.2 | ✅ | Foto/Video-Menü |
+| MP4(Lite) | 2.2 | ✅ | Videomenü > Bildformat > Dateiformat |
+| Bildgröße XS | 2.2 | ✅ | Fotomenü > Bildgröße > XS |
+| Motiverkennung Flugzeug/Zug | 2.2 | ✅ | AF-Menü |
+| LUMIX Flow App | 2.4 | ✅ | Setup > EIN/AUS > LUMIX Flow |
+| Verschlusszeitbegrenzer | 2.4 | ✅ | Videomenü > Belichtung |
+| Fokusring als Control Ring | 2.4 | ✅ | Custom > Objektiv/Sonstige |
+| Blende F45–F90 | 2.4 | ✅ | Belichtung |
+| DJI Gimbal Bluetooth-Pairing | 2.4 | ✅ | Setup > Bluetooth |
+| **DMW-DMS1 Mikrofon** | **2.7** | ✅ | Setup > EIN/AUS > Mikrofon (mit angeschlossenem DMS1) |
+| **LUMIX Flow v1.5+ Features** | **2.7** | ✅ | App-seitig |
 
 ---
 
@@ -154,10 +177,13 @@ Um zu prüfen, welche Features in der installierten Firmware 2.6 vorhanden sind:
 - Historisch hatten EU-Panasonic-Kameras ein 30-Minuten-Limit (Zollklassifizierung als "Videokamera"). Dies gilt für die S5IIX **NICHT** mehr
 
 ### Streaming-Funktion (nur S5IIX)
-- Die eingebaute Streaming-Funktion (RTMP/RTMPS via Wi-Fi, LAN oder USB-Tethering) ist **nur in der S5IIX** verfügbar, nicht in der S5II
-- Streaming-Qualität: bis zu FHD | 6M | 29.97p (H.264)
-- Streaming-Methoden: Direkt (über Smartphone/USB-Tethering) oder LAN
-- Unterstützte Plattformen: YouTube, Facebook, RTMP/RTMPS generisch
+- ⚠ **WICHTIG (EU):** Mit FW 2.2 (Januar 2025) wurden in **EU-Modellen** folgende Funktionen **entfernt**:
+  - **RTMP-Streaming via Wi-Fi/USB-Tethering**
+  - **Wired LAN Streaming (RTP/RTSP)**
+  - **WLAN-Bildtransfer zum PC**
+- Vor FW 2.2 (also FW 1.0–2.1): RTMP/RTMPS via Wi-Fi, LAN oder USB-Tethering verfügbar — bis zu FHD | 6M | 29.97p (H.264), YouTube/Facebook/RTMP generisch
+- **Ab FW 2.2 in EU:** Streaming nur noch via **LUMIX Lab App (Wireless IP Streaming, ab FW 2.2)** oder **LUMIX Flow App (ab FW 2.4)** möglich
+- ❓ Status auf der installierten FW 2.6: zu verifizieren, ob RTMP-Menü noch vorhanden ist (bei EU-Geräten, die ab 2.2 aktualisiert wurden, ist es entfernt)
 
 ### Systemfrequenz in der EU
 - **50.00 Hz (PAL)** — Standard für Europa

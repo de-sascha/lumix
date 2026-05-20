@@ -1,0 +1,4 @@
+firmware/*.zip
+firmware/*.bin
+.playwright-mcp/
+.DS_Store

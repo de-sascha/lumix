@@ -12,6 +12,7 @@
 | Filterdurchmesser | 82mm |
 | Min. Fokusabstand | 0.33m (35mm) / 0.85m (150mm) |
 | Bildstabilisierung | Keine (nutzt Kamera-IBIS) |
+| **Firmware (aktuell)** | **Ver. 3.6** (16.12.2025) — neueste verfügbare Version (verifiziert via lksamyang.com 2026-05-20) |
 
 ## AF-Verhalten auf der S5IIX
 
@@ -77,12 +78,34 @@ Fokusring-Steuerung:     NONLINEAR (Individualmenü > Objektiv/Weitere)
 
 ## Firmware-Updates
 
-Samyang bietet gelegentlich Lens-Firmware-Updates über die **Samyang Lens Station** an. Prüfen ob ein L-Mount-kompatibles Firmware-Update verfügbar ist, das AF-Performance verbessert.
+**Aktueller Stand:** Ver. 3.6 (16. Dezember 2025) — installiert und aktuell.
 
-**Samyang Lens Station** (separat erhältlich) wird benötigt für:
-- Firmware-Updates
-- AF-Feinabstimmung
-- Custom-Einstellungen des Fokusrings
+### Update-Prozess für L-Mount
+
+Anders als bei Sony-FE-Objektiven gibt es für L-Mount **keinen Lens Manager** und **keine Lens Station**. Das Objektiv-Firmware-Update läuft direkt **über die Kamera**:
+
+1. Firmware-Datei von https://www.lksamyang.com/en/support/support-download.php?model=L herunterladen (Filter "L")
+2. ZIP entpacken, `.bin`-Datei ins Root-Verzeichnis einer FAT/exFAT-formatierten SD-Karte kopieren
+3. Objektiv an die Kamera anschließen, SD-Karte in Slot 1
+4. Akku >50 % oder Netzteil
+5. Setup-Menü > Sonstige > Firmware-Anz. → die Kamera erkennt die Objektiv-Firmware und bietet das Update an
+6. ⚠ Während des Updates Kamera nicht ausschalten und Objektiv nicht entfernen
+
+### Firmware-Historie (L-Mount)
+
+| Version | Datum | Quelle |
+|---|---|---|
+| **3.6** | 16.12.2025 | Download-Bereich (keine Notice veröffentlicht) |
+| 3.5 | unbekannt | (keine Notice veröffentlicht) |
+| 3.4 | 17.12.2024 | Notice seq=1740 |
+| 2.1 | 02.09.2024 | Notice seq=1686 |
+| 1.0 | 04.06.2024 | Launch |
+
+> Hinweis: Lk Samyang veröffentlicht nicht alle L-Mount-Updates auf der Notice-Seite. Für den verlässlichen aktuellen Stand immer den **Download-Bereich mit Filter "L"** prüfen.
+
+### Hinweis zu Firmware-Updates der Sony-FE-Variante
+
+Das Notice vom **07.01.2026** (Stabilität mit Sony α7 V) betrifft **nur die FE-Version** des 35-150mm. Die L-Mount-Variante ist nicht betroffen.
 
 ---
 
