@@ -105,6 +105,25 @@ In der EU mit 50Hz-Stromnetz:
 Verifiziert am 2026-05-21 durch Foto-Inspektion aller 6 Menüseiten am Gerät.
 Listenansicht der Aufnahmequalität, sortiert nach Auflösungsklasse.
 
+#### Mini-Glossar — was bedeuten die Spalten?
+
+Die Tabellen unten enthalten Fachbegriffe. Hier eine Übersetzung in normale Sprache:
+
+- **Auflösung** (z. B. `5952×3968`) — wie viele Bildpunkte (Pixel) breit × hoch das Video hat. Mehr = schärfer, aber auch größere Dateien und mehr Wärme. FHD = 1920×1080 ("Full HD"), 4K UHD ≈ 3840×2160, 6K ≈ 5952 breit.
+- **Seitenverhältnis** (z. B. `16:9`, `4:3`, `3:2`) — die Bildform. `16:9` ist das normale Fernseh-/YouTube-Format. `3:2` ist Foto-Format (etwas höher als 16:9). `4:3` ist quadratischer (alte Röhrenfernseher).
+- **Open Gate** — die Kamera nutzt den **kompletten Sensor**, ohne oben/unten was abzuschneiden. Liefert das maximale Bild, das der Sensor liefern kann. Vorteil: man kann später frei reinzoomen/croppen. Nachteil: Sensor arbeitet am meisten → mehr Wärme.
+- **Bildbereich** — wie viel des Sensors genutzt wird:
+  - **Full-frame** = der ganze Sensor (volles Bild, mehr Lichtempfindlichkeit, weniger Schärfentiefe)
+  - **APS-C** = nur der mittlere Ausschnitt des Sensors. Das wirkt wie ein Tele-Zoom (~1,5×), aber das Bild kommt von weniger Sensorfläche.
+- **Bildrate** (z. B. `25p`, `50p`, `100p`) — wie viele Einzelbilder pro Sekunde aufgenommen werden. `25p` = 25 Bilder/Sekunde (PAL-Standard für TV in Europa). `50p` = doppelt so flüssig, aber doppelte Datenmenge. Das `p` heißt "progressiv" (jedes Bild komplett, im Gegensatz zu altem Halbbild-`i`).
+- **Codec** — die Methode, wie das Video komprimiert wird, damit die Datei nicht riesig wird. Zwei Hauptvarianten:
+  - **LongGOP** — sparsam: speichert nur ein vollständiges Bild und danach nur die Veränderungen. Kleine Dateien, ressourcenschonend, gut für Streaming/Aufnahme. **Das nutzen wir.**
+  - **ALL-Intra** — jedes Bild komplett gespeichert. Bessere Qualität für Schnitt, aber riesige Dateien und sehr hohe Anforderungen an die Speicherkarte. **Nutzen wir nicht** (s. Hinweis unten).
+- **4:2:2 / 4:2:0 10-Bit** — beschreibt, wie viel Farbinformation gespeichert wird. `4:2:2` hat mehr Farbdetails als `4:2:0`. `10-Bit` = feinere Farbabstufungen als 8-Bit (weniger Banding im Himmel etc.). Für Streaming reicht `4:2:0 10-Bit` problemlos.
+- **Bitrate** (`Mbps` = Megabit pro Sekunde) — wie viele Daten pro Sekunde geschrieben werden. Mehr Mbps = bessere Qualität, aber mehr Speicherverbrauch und höhere Anforderungen an die SD-Karte. Faustregel: `100 Mbps` füllt eine 256-GB-Karte in ~5,5 h, `200 Mbps` in ~2,8 h.
+
+> **Hinweis zu ALL-Intra-Modi (400/600 Mbps):** Diese Modi tauchen im Kameramenü auf, sind aber mit der vorhandenen V60-SD-Karte **nicht nutzbar** — die Karte ist zu langsam, die Aufnahme würde sofort abbrechen. Die Tabellen unten listen daher nur die mit V60 nutzbaren LongGOP-Modi.
+
 #### Seite 1/6 — Open Gate / 6K / 5.9K (Full-frame, höchste Auflösungen)
 
 | Auflösung | Seitenverh. | Bildbereich | Bildrate | Codec | Bitrate |
@@ -112,17 +131,16 @@ Listenansicht der Aufnahmequalität, sortiert nach Auflösungsklasse.
 | 5952×3968 | 3:2 (Open Gate) | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps |
 | 5952×3136 | 17:9 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps |
 | 5888×3312 | 16:9 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps |
-| 5888×3312 | 16:9 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps (zweite Variante) |
 
-#### Seite 2/6 — APS-C 3.3K (Open Gate 4:3) und C4K-Übergang
+> Im Menü erscheint `5888×3312 16:9` zweimal hintereinander — das ist ein bekanntes Anzeige-Verhalten (vermutlich H.264- und H.265-Variante derselben Auflösung). Für unsere Zwecke gleichwertig.
+
+#### Seite 2/6 — APS-C 3.3K (Open Gate 4:3)
 
 | Auflösung | Seitenverh. | Bildbereich | Bildrate | Codec | Bitrate |
 |---|---|---|---|---|---|
 | 3328×2496 | 4:3 (Open Gate) | APS-C | 50p | 4:2:0 10-Bit LongGOP | 200 Mbps |
-| 3328×2496 | 4:3 (Open Gate) | APS-C | 50p | 4:2:2 10-Bit ALL-Intra | 600 Mbps |
 | 3328×2496 | 4:3 (Open Gate) | APS-C | 25p | 4:2:0 10-Bit LongGOP | 150 Mbps |
 | 3328×2496 | 4:3 (Open Gate) | APS-C | 25p | 4:2:2 10-Bit LongGOP | 150 Mbps |
-| 3328×2496 | 4:3 (Open Gate) | APS-C | 25p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
 
 #### Seite 3/6 — C4K (4096×2160, Cinema 4K, 17:9)
 
@@ -130,75 +148,56 @@ Listenansicht der Aufnahmequalität, sortiert nach Auflösungsklasse.
 |---|---|---|---|---|
 | 4096×2160 | Full-frame | 50p | 4:2:2 10-Bit LongGOP | 200 Mbps |
 | 4096×2160 | APS-C | 50p | 4:2:0 10-Bit LongGOP | 200 Mbps |
-| 4096×2160 | Full-frame | 50p | 4:2:0 10-Bit LongGOP | – |
-| 4096×2160 | APS-C | 50p | 4:2:2 10-Bit ALL-Intra | 600 Mbps |
 | 4096×2160 | Full-frame | 25p | 4:2:2 10-Bit LongGOP | 150 Mbps |
 | 4096×2160 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 150 Mbps |
-| 4096×2160 | Full-frame | 25p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
 
 #### Seite 4/6 — 4K UHD (3840×2160, 16:9)
 
 | Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
 |---|---|---|---|---|
-| 3840×2160 | APS-C | 50p | 4:2:2 10-Bit ALL-Intra | 600 Mbps |
 | 3840×2160 | APS-C | 50p | 4:2:2 10-Bit LongGOP | 200 Mbps |
 | 3840×2160 | APS-C | 50p | 4:2:0 10-Bit LongGOP | 200 Mbps |
-| 3840×2160 | Full-frame | 25p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
 | 3840×2160 | Full-frame | 25p | 4:2:2 10-Bit LongGOP | 150 Mbps |
 | 3840×2160 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 150 Mbps |
 
-#### Seite 5/6 — FHD 100p (High Frame Rate)
+#### Seite 5/6 — FHD 100p (High Frame Rate, für Zeitlupe)
+
+`100p` bedeutet 100 Bilder pro Sekunde. In der Wiedergabe mit 25p ergibt das eine 4×-Zeitlupe. Für normales Streaming nicht relevant.
 
 | Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
 |---|---|---|---|---|
-| 1920×1080 | Full-frame | 100p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
 | 1920×1080 | Full-frame | 100p | 4:2:2 10-Bit LongGOP | 150 Mbps |
 | 1920×1080 | Full-frame | 100p | 4:2:0 10-Bit LongGOP | 150 Mbps |
-| 1920×1080 | Full-frame | 50p | 4:2:2 10-Bit ALL-Intra | 200 Mbps |
 | 1920×1080 | Full-frame | 50p | 4:2:2 10-Bit LongGOP | 100 Mbps |
 | 1920×1080 | Full-frame | 50p | 4:2:0 10-Bit LongGOP | 100 Mbps |
 
-#### Seite 6/6 — FHD 25p
+#### Seite 6/6 — FHD 25p (sparsamster Modus, ideal als Backup-Aufnahme)
 
 | Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
 |---|---|---|---|---|
-| 1920×1080 | Full-frame | 25p | 4:2:2 10-Bit ALL-Intra | 200 Mbps |
 | 1920×1080 | Full-frame | 25p | 4:2:2 10-Bit LongGOP | 100 Mbps |
 | 1920×1080 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 100 Mbps |
 
-### Worst-Case-Modi für Hitze-Stresstest (nur SD-Recording)
+### Stresstest-Modi für die Kirchen-Kamera
 
-Sortiert nach erwarteter thermischer Last:
+Ziel eines Stresstests: prüfen, wie lange die Kamera bei voller Last durchhält, **bevor** sie im echten Stream einsetzbar ist. Wir nutzen dafür interne SD-Aufnahme (kein Streaming-Pfad nötig).
 
-| Rang | Modus | Last-Profil | SD-Karte | ~Dauer 256 GB |
-|---|---|---|---|---|
-| 1 | 3.3K 4:3 50p ALL-Intra 600 Mbps (APS-C Open Gate) | Sensor + Encoder + Karte (Maximum) | V90 zwingend | ~57 Min |
-| 2 | 4K UHD 50p ALL-Intra 600 Mbps (APS-C) | Encoder + Karte am Limit | V90 zwingend | ~57 Min |
-| 3 | C4K 50p ALL-Intra 600 Mbps (APS-C) | Encoder + Karte am Limit | V90 zwingend | ~57 Min |
-| 4 | C4K 25p ALL-Intra 400 Mbps (Full-frame) | Voller Sensor + Encoder | V90 zwingend | ~85 Min |
-| 5 | 4K UHD 25p ALL-Intra 400 Mbps (Full-frame) | Voller Sensor + Encoder | V90 zwingend | ~85 Min |
-| 6 | 5.9K 25p LongGOP 200 Mbps (Full-frame) | Voller Sensor-Readout | V60 reicht | ~170 Min |
-| 7 | 6K Open Gate 25p LongGOP 200 Mbps (Full-frame 3:2) | Voller Sensor 3:2 (mehr Pixel als 5.9K) | V60 reicht | ~170 Min |
+> **Setup-Annahme:** Aktuell ist eine **V60-SD-Karte** im Einsatz. Die Tabelle und Empfehlung beziehen sich ausschließlich auf Modi, die mit V60 zuverlässig laufen.
 
-**Empfehlung Stresstest-Reihenfolge:**
+#### Last-Profile sortiert nach erwarteter Wärme/Belastung
 
-1. **Sensor-Stress:** 6K Open Gate 25p LongGOP 200 Mbps Full-frame
-   → längster Durchlauf (~2,8h), maximaler Sensor-Readout
-2. **Encoder/Karten-Stress:** 4K UHD 50p ALL-Intra 600 Mbps APS-C
-   → kürzerer Durchlauf (~1h), Bitrate am absoluten Limit
-3. **Kombi-Worst-Case:** 3.3K 4:3 50p ALL-Intra 600 Mbps APS-C Open Gate
-   → maximaler Sensor-Readout im APS-C-Bereich + maximale Bitrate
+| Rang | Modus | Was wird belastet? | Dauer auf 256 GB |
+|---|---|---|---|
+| 1 | **6K Open Gate 25p LongGOP 200 Mbps (Full-frame 3:2)** | Maximaler Sensor-Readout (mehr Pixel als 5.9K) | ~170 Min (2,8 h) |
+| 2 | 5.9K 25p LongGOP 200 Mbps (Full-frame 16:9) | Voller Sensor-Readout | ~170 Min (2,8 h) |
+| 3 | 4K UHD 50p LongGOP 200 Mbps (APS-C) | Doppelte Framerate → mehr Encoder-Arbeit | ~170 Min (2,8 h) |
+| 4 | C4K 50p LongGOP 200 Mbps (Full-frame) | Voller Sensor + 50p | ~170 Min (2,8 h) |
 
-**SD-Karten-Anforderungen:**
-- ≤ 200 Mbps → V60 ausreichend
-- 400–600 Mbps ALL-Intra → **V90 zwingend** (sonst Aufnahme-Abbruch)
-- Empfehlung: V90 in beiden Slots für Konsistenz
+> Erklärung: "Sensor-Readout" = wie viele Pixel pro Sekunde der Bildsensor ablesen muss. Mehr Pixel oder höhere Framerate = mehr Wärme im Sensor. "Encoder-Arbeit" = wie viel die Kamera-Elektronik komprimieren muss. 50p doppelt so viel wie 25p.
 
-### Stresstest mit nur V60-Karte verfügbar
+#### Empfohlener Modus für den Hauptdurchlauf
 
-Wenn nur eine V60-Karte vorhanden ist, fallen alle ALL-Intra-Modi (400/600 Mbps) weg — die führen zum Aufnahme-Abbruch. Verbleibend: LongGOP-Modi ≤ 200 Mbps.
-
-**Empfohlener Modus: 6K Open Gate 25p LongGOP 200 Mbps Full-frame**
+**6K Open Gate 25p LongGOP 200 Mbps Full-frame**
 
 | Parameter | Einstellung |
 |---|---|
@@ -209,11 +208,11 @@ Wenn nur eine V60-Karte vorhanden ist, fallen alle ALL-Intra-Modi (400/600 Mbps)
 | Erwartete Dauer auf 256 GB | ~170 Min (2,8 h) |
 
 Begründung:
-- 3:2 Open Gate liest mehr Sensorpixel als 5.9K 16:9 → maximaler Sensor-Stress, der mit V60 stabil bleibt
-- Lange Laufzeit deckt realistischen Gottesdienst-Marathon ab
+- 3:2 Open Gate liest mehr Sensorpixel als 5.9K 16:9 → härtester Sensor-Stress, der mit V60 stabil bleibt
+- Lange Laufzeit deckt einen realistischen Gottesdienst-Marathon ab
 - Geht über bisherigen 4K-Test (2×3,5 h bestanden, 2026-05-21) hinaus, weil der Sensor mehr arbeiten muss
 
-**Optionaler zweiter Durchlauf (Encoder-Last betonen):** 4K UHD 50p LongGOP 200 Mbps APS-C — doppelte Framerate, stärkerer Encoder-Anteil, ebenfalls V60-tauglich.
+**Optionaler zweiter Durchlauf (Encoder stärker fordern):** 4K UHD 50p LongGOP 200 Mbps APS-C — doppelte Framerate, stärkerer Encoder-Anteil.
 
 **Wichtige Begleit-Einstellungen für aussagekräftigen Stresstest:**
 - Temperaturmanagement: HIGH (Setup > Monitor/Display)
