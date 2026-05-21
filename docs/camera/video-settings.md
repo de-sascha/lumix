@@ -100,9 +100,129 @@ In der EU mit 50Hz-Stromnetz:
 | FHD 1920×1080 | 50p | 8-Bit AVC 4:2:0 | 28 Mbit |
 | FHD 1920×1080 | 25p | 8-Bit AVC 4:2:0 | 20 Mbit |
 
-### MOV-Format (Long GOP und All-Intra)
+### MOV-Format — Vollständige Liste (PAL 50,00 Hz, FW 2.7)
 
-Höhere Qualitäten bis 6K verfügbar (nur im Modus Kreative Filme).
+Verifiziert am 2026-05-21 durch Foto-Inspektion aller 6 Menüseiten am Gerät.
+Listenansicht der Aufnahmequalität, sortiert nach Auflösungsklasse.
+
+#### Seite 1/6 — Open Gate / 6K / 5.9K (Full-frame, höchste Auflösungen)
+
+| Auflösung | Seitenverh. | Bildbereich | Bildrate | Codec | Bitrate |
+|---|---|---|---|---|---|
+| 5952×3968 | 3:2 (Open Gate) | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps |
+| 5952×3136 | 17:9 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps |
+| 5888×3312 | 16:9 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps |
+| 5888×3312 | 16:9 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 200 Mbps (zweite Variante) |
+
+#### Seite 2/6 — APS-C 3.3K (Open Gate 4:3) und C4K-Übergang
+
+| Auflösung | Seitenverh. | Bildbereich | Bildrate | Codec | Bitrate |
+|---|---|---|---|---|---|
+| 3328×2496 | 4:3 (Open Gate) | APS-C | 50p | 4:2:0 10-Bit LongGOP | 200 Mbps |
+| 3328×2496 | 4:3 (Open Gate) | APS-C | 50p | 4:2:2 10-Bit ALL-Intra | 600 Mbps |
+| 3328×2496 | 4:3 (Open Gate) | APS-C | 25p | 4:2:0 10-Bit LongGOP | 150 Mbps |
+| 3328×2496 | 4:3 (Open Gate) | APS-C | 25p | 4:2:2 10-Bit LongGOP | 150 Mbps |
+| 3328×2496 | 4:3 (Open Gate) | APS-C | 25p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
+
+#### Seite 3/6 — C4K (4096×2160, Cinema 4K, 17:9)
+
+| Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
+|---|---|---|---|---|
+| 4096×2160 | Full-frame | 50p | 4:2:2 10-Bit LongGOP | 200 Mbps |
+| 4096×2160 | APS-C | 50p | 4:2:0 10-Bit LongGOP | 200 Mbps |
+| 4096×2160 | Full-frame | 50p | 4:2:0 10-Bit LongGOP | – |
+| 4096×2160 | APS-C | 50p | 4:2:2 10-Bit ALL-Intra | 600 Mbps |
+| 4096×2160 | Full-frame | 25p | 4:2:2 10-Bit LongGOP | 150 Mbps |
+| 4096×2160 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 150 Mbps |
+| 4096×2160 | Full-frame | 25p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
+
+#### Seite 4/6 — 4K UHD (3840×2160, 16:9)
+
+| Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
+|---|---|---|---|---|
+| 3840×2160 | APS-C | 50p | 4:2:2 10-Bit ALL-Intra | 600 Mbps |
+| 3840×2160 | APS-C | 50p | 4:2:2 10-Bit LongGOP | 200 Mbps |
+| 3840×2160 | APS-C | 50p | 4:2:0 10-Bit LongGOP | 200 Mbps |
+| 3840×2160 | Full-frame | 25p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
+| 3840×2160 | Full-frame | 25p | 4:2:2 10-Bit LongGOP | 150 Mbps |
+| 3840×2160 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 150 Mbps |
+
+#### Seite 5/6 — FHD 100p (High Frame Rate)
+
+| Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
+|---|---|---|---|---|
+| 1920×1080 | Full-frame | 100p | 4:2:2 10-Bit ALL-Intra | 400 Mbps |
+| 1920×1080 | Full-frame | 100p | 4:2:2 10-Bit LongGOP | 150 Mbps |
+| 1920×1080 | Full-frame | 100p | 4:2:0 10-Bit LongGOP | 150 Mbps |
+| 1920×1080 | Full-frame | 50p | 4:2:2 10-Bit ALL-Intra | 200 Mbps |
+| 1920×1080 | Full-frame | 50p | 4:2:2 10-Bit LongGOP | 100 Mbps |
+| 1920×1080 | Full-frame | 50p | 4:2:0 10-Bit LongGOP | 100 Mbps |
+
+#### Seite 6/6 — FHD 25p
+
+| Auflösung | Bildbereich | Bildrate | Codec | Bitrate |
+|---|---|---|---|---|
+| 1920×1080 | Full-frame | 25p | 4:2:2 10-Bit ALL-Intra | 200 Mbps |
+| 1920×1080 | Full-frame | 25p | 4:2:2 10-Bit LongGOP | 100 Mbps |
+| 1920×1080 | Full-frame | 25p | 4:2:0 10-Bit LongGOP | 100 Mbps |
+
+### Worst-Case-Modi für Hitze-Stresstest (nur SD-Recording)
+
+Sortiert nach erwarteter thermischer Last:
+
+| Rang | Modus | Last-Profil | SD-Karte | ~Dauer 256 GB |
+|---|---|---|---|---|
+| 1 | 3.3K 4:3 50p ALL-Intra 600 Mbps (APS-C Open Gate) | Sensor + Encoder + Karte (Maximum) | V90 zwingend | ~57 Min |
+| 2 | 4K UHD 50p ALL-Intra 600 Mbps (APS-C) | Encoder + Karte am Limit | V90 zwingend | ~57 Min |
+| 3 | C4K 50p ALL-Intra 600 Mbps (APS-C) | Encoder + Karte am Limit | V90 zwingend | ~57 Min |
+| 4 | C4K 25p ALL-Intra 400 Mbps (Full-frame) | Voller Sensor + Encoder | V90 zwingend | ~85 Min |
+| 5 | 4K UHD 25p ALL-Intra 400 Mbps (Full-frame) | Voller Sensor + Encoder | V90 zwingend | ~85 Min |
+| 6 | 5.9K 25p LongGOP 200 Mbps (Full-frame) | Voller Sensor-Readout | V60 reicht | ~170 Min |
+| 7 | 6K Open Gate 25p LongGOP 200 Mbps (Full-frame 3:2) | Voller Sensor 3:2 (mehr Pixel als 5.9K) | V60 reicht | ~170 Min |
+
+**Empfehlung Stresstest-Reihenfolge:**
+
+1. **Sensor-Stress:** 6K Open Gate 25p LongGOP 200 Mbps Full-frame
+   → längster Durchlauf (~2,8h), maximaler Sensor-Readout
+2. **Encoder/Karten-Stress:** 4K UHD 50p ALL-Intra 600 Mbps APS-C
+   → kürzerer Durchlauf (~1h), Bitrate am absoluten Limit
+3. **Kombi-Worst-Case:** 3.3K 4:3 50p ALL-Intra 600 Mbps APS-C Open Gate
+   → maximaler Sensor-Readout im APS-C-Bereich + maximale Bitrate
+
+**SD-Karten-Anforderungen:**
+- ≤ 200 Mbps → V60 ausreichend
+- 400–600 Mbps ALL-Intra → **V90 zwingend** (sonst Aufnahme-Abbruch)
+- Empfehlung: V90 in beiden Slots für Konsistenz
+
+### Stresstest mit nur V60-Karte verfügbar
+
+Wenn nur eine V60-Karte vorhanden ist, fallen alle ALL-Intra-Modi (400/600 Mbps) weg — die führen zum Aufnahme-Abbruch. Verbleibend: LongGOP-Modi ≤ 200 Mbps.
+
+**Empfohlener Modus: 6K Open Gate 25p LongGOP 200 Mbps Full-frame**
+
+| Parameter | Einstellung |
+|---|---|
+| Systemfrequenz | 50,00 Hz (PAL) |
+| Aufnahmeformat | MOV |
+| Aufnahmequalität | 5952×3968 3:2 Open Gate, 25p, 4:2:0 10-Bit LongGOP, 200 Mbps |
+| Bildbereich | Full-frame |
+| Erwartete Dauer auf 256 GB | ~170 Min (2,8 h) |
+
+Begründung:
+- 3:2 Open Gate liest mehr Sensorpixel als 5.9K 16:9 → maximaler Sensor-Stress, der mit V60 stabil bleibt
+- Lange Laufzeit deckt realistischen Gottesdienst-Marathon ab
+- Geht über bisherigen 4K-Test (2×3,5 h bestanden, 2026-05-21) hinaus, weil der Sensor mehr arbeiten muss
+
+**Optionaler zweiter Durchlauf (Encoder-Last betonen):** 4K UHD 50p LongGOP 200 Mbps APS-C — doppelte Framerate, stärkerer Encoder-Anteil, ebenfalls V60-tauglich.
+
+**Wichtige Begleit-Einstellungen für aussagekräftigen Stresstest:**
+- Temperaturmanagement: HIGH (Setup > Monitor/Display)
+- Lüfter Modus: AUTO2 (realistisch) oder SLOW (härter)
+- Ruhemodus / Energie sparen: AUS (sonst vorzeitiger Abbruch — siehe `standby-incident-2026-05.md`)
+- Bildstabilisator (IBIS): AUS
+- LCD: eingeklappt (reduziert Kühlfläche bewusst)
+- USB-PD-Netzteil + Akku drin (zusätzliche Wärme im Akkufach)
+- Umgebung: 23–26 °C, kein direkter Luftzug
 
 ## Dauer-AF-Einstellung für Video
 
