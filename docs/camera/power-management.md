@@ -29,20 +29,26 @@ Die S5IIX unterstützt USB-PD über den USB-C-Anschluss. Das ermöglicht Dauerbe
 
 ## Standby/Sleep-Vermeidung
 
-### Kritische Einstellungen
+### ⚠️ Bekannter Vorfall (Mai 2026)
 
-Einstellung: **Setup-Menü > Monitor/Display 1 > Power Save Mode**
+Während eines Gottesdienst-Streams ist die S5IIX unerwartet ausgegangen. Diagnose ergab: **Ruhemodus war auf 5 Min aktiv**. Die Kamera hat HDMI-Out alleine NICHT als Aktivität erkannt und nach 5 Min Inaktivität abgeschaltet — entgegen der Handbuch-Aussage, dass HDMI-Out den Standby verhindern soll.
 
-| Einstellung | Empfehlung für Streaming | Menüpfad |
-|---|---|---|
-| Sleep Mode | **OFF** | Setup > Monitor/Display 1 > Power Save Mode |
-| Sleep Mode (Wi-Fi) | **OFF** | Setup > Monitor/Display 1 > Power Save Mode |
-| Auto LVF/Monitor Off | **OFF** | Setup > Monitor/Display 1 > Power Save Mode |
-| Power Save LVF Shooting | **OFF** | Setup > Monitor/Display 1 > Power Save Mode |
+**Konsequenz:** ALLE Standby-Trigger explizit auf AUS setzen, dem Handbuch nicht blind vertrauen.
 
-### Power Save Mode ist AUTOMATISCH DEAKTIVIERT bei:
+### Kritische Einstellungen (verifiziert FW 2.6, deutsches Menü)
 
-Laut offiziellem Handbuch ist Power Save Mode nicht aktiv in folgenden Fällen:
+Menü-Pfad: **MENU → 🔧 Setup → EIN/AUS → Sparmodus**
+
+| Einstellung | Standard (Werk) | Empfehlung Streaming | Begründung |
+|---|---|---|---|
+| **Ruhemodus** | 5 Min | **AUS** | Hauptursache des Mai-2026-Vorfalls. Schaltet Kamera komplett ab. |
+| **Ruhemodus (Wi-Fi)** | EIN | **AUS** | Greift zusätzlich auch mit Wi-Fi-Verbindung. |
+| **Sucher (LVF)** | 5 Min | **AUS** | Wir nutzen LCD/HDMI, nicht den Sucher — sicherheitshalber AUS. |
+| **Energiespar-Sucheraufn. → Zeit bis zur Ruhe** | — | **OFF** | Verhindert Standby bei eingeklapptem LCD. |
+| **Ruhe-Modus Aktivierung** | Control Panel | Control Panel | Reine Anzeige-Option, mit Ruhemodus=AUS irrelevant. |
+
+### Power Save Mode ist AUTOMATISCH DEAKTIVIERT bei (laut Handbuch):
+
 - Während Videoaufnahme/Videowiedergabe
 - Bei PC-Verbindung
 - Bei Time Lapse Shot
@@ -50,9 +56,17 @@ Laut offiziellem Handbuch ist Power Save Mode nicht aktiv in folgenden Fällen:
 - Bei Live View Composite
 - Bei Focus Transition
 - Während Slide Show
-- **Während HDMI-Output für Aufnahme**
+- **Während HDMI-Output für Aufnahme** ← in der Praxis NICHT zuverlässig (s. Vorfall oben!)
 
-**Wichtig:** HDMI-Output hält die Kamera wach! Trotzdem alle Sleep-Modi explizit ausschalten als Sicherheitsnetz.
+**Wichtig:** Trotz Handbuch-Aussage hat HDMI-Output die Kamera in der Praxis NICHT zuverlässig wach gehalten. Standby-Modi explizit ausschalten ist Pflicht, nicht optional.
+
+### Doppel-Sicherung: Internes Backup-Recording
+
+Zusätzlich zur HDMI-Ausgabe ein **internes FHD-Recording auf SD-Karte** mitlaufen lassen:
+
+- Kamera ist „beschäftigt" — Standby-Trigger greifen unter keinen Umständen
+- Backup-Video falls der Stream-PC abstürzt
+- Bei FHD 25p H.264 thermisch unkritisch (3-5h+ stabil)
 
 ## Empfohlenes Power-Setup für Kirchenstreaming
 
@@ -107,7 +121,12 @@ Laut offiziellem Handbuch ist Power Save Mode nicht aktiv in folgenden Fällen:
 
 - [ ] USB-PD Netzteil angeschlossen und Kamera zeigt Lade-Symbol
 - [ ] Akku BLK22 voll geladen eingelegt
-- [ ] Sleep Mode: OFF
-- [ ] Auto LVF/Monitor Off: OFF
+- [ ] **Ruhemodus: AUS** (nicht 5 Min!)
+- [ ] **Ruhemodus (Wi-Fi): AUS**
+- [ ] **Sucher (LVF): AUS**
+- [ ] Energiespar-Sucheraufn. → Zeit bis zur Ruhe: OFF
+- [ ] Lüfter Modus: AUTO2
+- [ ] Temperaturmanagement: HIGH (Setup → Monitor → Temperaturmgmt)
+- [ ] Internes FHD-Backup-Recording aktiv (Doppel-Sicherung)
 - [ ] HDMI-Kabel fest angeschlossen
-- [ ] 10-Minuten-Test: Kamera bleibt wach
+- [ ] **15-Min-Test:** Kamera aufbauen, nicht anfassen, prüfen ob sie an bleibt

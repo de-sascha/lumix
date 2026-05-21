@@ -13,6 +13,7 @@ Umfassende Wissensbasis für den Einsatz der Panasonic Lumix DC-S5IIX im Kirchen
 - [Firmware-Changelog & EU-Einschränkungen](docs/camera/firmware-changelog.md) — Versionshistorie v1.0–v3.7, regionale Unterschiede, Verifikations-Checkliste
 - [Thermomanagement & Lüfter](docs/camera/thermal-management.md) — Lüfter-Modi (AUTO1/2, FAST, SLOW, OFF), Temperaturmanagement-Einstellung, Wärme-Reduktion
 - [Stromversorgung & Standby-Vermeidung](docs/camera/power-management.md) — USB-PD Anforderungen, Sleep-Modi deaktivieren, Akku als USV
+- [Vorfall-Bericht: Kamera ging im Stream aus (Mai 2026)](docs/camera/standby-incident-2026-05.md) — Diagnose Ruhemodus-Default, Vorher/Nachher-Konfiguration
 - [Videoeinstellungen](docs/camera/video-settings.md) — Systemfrequenz, Codec/Bitrate, Bildrate, 180°-Shutter-Regel, Bildstil
 - [Autofokus-Einstellungen](docs/camera/af-settings.md) — AF-Modi für Kirche, Gesichts-/Augenerkennung, Hunting-Vermeidung, Szenarien
 - [HDMI-Output](docs/camera/hdmi-output.md) — Clean HDMI, 4K vs 1080p, Farbtiefe, Kabel-Empfehlungen
@@ -36,7 +37,8 @@ Umfassende Wissensbasis für den Einsatz der Panasonic Lumix DC-S5IIX im Kirchen
 
 | Komponente | Detail |
 |---|---|
-| Kamera (neu) | Panasonic Lumix DC-S5IIX (Firmware 2.6, Dez. 2025) |
+| Kamera (neu) | Panasonic Lumix DC-S5IIX (Gehäuse-FW 2.6, Dez. 2025) — SN: WJ5DC001118 |
+| Objektiv-Firmware | Samyang AF 35-150mm F2-2.8 — FW 3.6 |
 | Kamera (aktuell) | Panasonic AW-HE40HW PTZ (SDI → DeckLink) |
 | Capture Card | Blackmagic DeckLink Mini Recorder 4K (SDI für PTZ, HDMI für S5IIX) |
 | Software | OBS Studio 32.1.2 (Windows 11 Pro) |
