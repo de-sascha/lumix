@@ -1,16 +1,139 @@
-# Firmware-Changelog: Panasonic Lumix DC-S5IIX / DC-S5II
+# Kapitel 3 — Firmware-Stand und Versionshistorie
 
-**Aktuell installiert (S5IIX):** **Version 2.7** (10. März 2026) — eingespielt am 2026-05-20
-**Neueste verfügbare Version (S5IIX):** Version 2.7 — aktuell ✅
+> Teil I, Kapitel 3 des [S5IIX-Handbuchs](../../README.md). Voriges Kapitel: [2. Region und Systemfrequenz (im README)](../../README.md#2-region-und-systemfrequenz). Nächstes Kapitel: [4. Stromversorgung und Standby](power-management.md).
 
-Quelle: https://av.jpn.support.panasonic.com/support/global/cs/dsc/download/ff/dl/s5m2x.html (abgerufen 2026-05-20)
+## Worum geht es hier?
 
-> Einträge mit `[VERIFIZIERT]` — anhand offizieller Panasonic Update-Seite oder Gerät bestätigt.
-> Einträge mit `[TRAINING-WISSEN]` — basieren auf dem Kenntnisstand bis Anfang 2025.
+Die Firmware ist die interne Software der Kamera. Panasonic veröffentlicht regelmäßig Updates, die neue Funktionen bringen oder Fehler beheben — manchmal aber auch **bestehende Funktionen entfernen**, gerade in der EU-Variante. Vor jedem Firmware-Update lohnt sich daher ein Blick in die Versionshistorie: bringt das Update etwas Nützliches? Nimmt es etwas weg, das wir aktuell verwenden?
+
+**Was dieses Kapitel liefert:**
+
+1. Den **aktuell installierten Firmware-Stand** (Abschnitt 3.1).
+2. Was **konkret in unserer Version 2.7** alles enthalten ist (Abschnitt 3.2).
+3. **Wichtige EU-spezifische Einschränkungen**, die man kennen muss (Abschnitt 3.3).
+4. **Was die S5IIX nicht kann**, obwohl es oft falsch kolportiert wird (Abschnitt 3.4).
+5. Den **Update-Prozess** Schritt für Schritt (Abschnitt 3.5).
+6. Die **vollständige Versionshistorie** als Nachschlagewerk (Abschnitt 3.6).
+
+> **Lese-Tipp:** Wer nur wissen will, was die aktuelle Firmware kann, liest 3.1–3.4. Die ausführliche Versionsliste in 3.6 ist Nachschlage-Material — z. B. interessant, wenn man eine ältere Kamera findet und wissen will, was seitdem passiert ist.
 
 ---
 
-## S5IIX-spezifische Firmware-Historie `[VERIFIZIERT via Panasonic Support 2026-05-20]`
+## 3.1 Aktueller Stand (Quick-Facts)
+
+| Feld | Wert |
+|---|---|
+| **Installiert (S5IIX)** | **Version 2.7** (10. März 2026) — eingespielt am 2026-05-20 |
+| **Neueste verfügbare Version** | Version 2.7 — also aktuell ✅ |
+| Firmware-Quelle | https://av.jpn.support.panasonic.com/support/global/cs/dsc/download/ff/dl/s5m2x.html (abgerufen 2026-05-20) |
+| Lokale Kopie der Datei | `firmware/S5m2XV27.zip` |
+
+> **Verifikations-Hinweise in der Versionsliste:**
+> - `[VERIFIZIERT]` — anhand der offiziellen Panasonic-Update-Seite oder am Gerät bestätigt.
+> - `[TRAINING-WISSEN]` — basiert auf Kenntnisstand bis Anfang 2025, ohne Quellen-Bestätigung.
+
+---
+
+## 3.2 Was kann die Kamera jetzt? (Features in FW 2.7)
+
+Bei FW 2.7 sind **alle** Features kumulativ enthalten — also alles, was zwischen Version 1.0 und 2.7 jemals dazugekommen ist. Hier eine Übersicht der praxisrelevanten Funktionen, sortiert danach, mit welcher Firmware-Version sie eingeführt wurden:
+
+| Feature | Eingeführt mit FW | In 2.7 vorhanden | Menüpfad |
+|---|---|---|---|
+| Frame.io Camera to Cloud | 2.0 | ✅ | Setup > EIN/AUS > Frame.io |
+| Proxy-Aufnahme | 2.0 | ✅ | Videomenü > Bildformat > Proxy-Aufnahme |
+| SH PRE (Pre-Burst) | 2.0 | ✅ | Foto > Auslösermodus > SH PRE |
+| LEICA Monochrome | 2.1 | ✅ | Photo Style |
+| LUMIX Lab Support | 2.1 | ✅ | App-seitig |
+| DMW-XLR2 (kein 32-bit Float) | 2.1 | ✅ | XLR-Adapter anschließen |
+| 5GHz Wi-Fi | 2.1 | ✅ | Setup > Wi-Fi > Frequenzband |
+| Crop Zoom | 2.2 | ✅ | Foto/Video-Menü |
+| Hybrid Zoom | 2.2 | ✅ | Foto/Video-Menü |
+| MP4(Lite) | 2.2 | ✅ | Videomenü > Bildformat > Dateiformat |
+| Bildgröße XS | 2.2 | ✅ | Fotomenü > Bildgröße > XS |
+| Motiverkennung Flugzeug/Zug | 2.2 | ✅ | AF-Menü |
+| LUMIX Flow App | 2.4 | ✅ | Setup > EIN/AUS > LUMIX Flow |
+| Verschlusszeitbegrenzer | 2.4 | ✅ | Videomenü > Belichtung |
+| Fokusring als Control Ring | 2.4 | ✅ | Custom > Objektiv/Sonstige |
+| Blende F45–F90 | 2.4 | ✅ | Belichtung |
+| DJI Gimbal Bluetooth-Pairing | 2.4 | ✅ | Setup > Bluetooth |
+| **DMW-DMS1 Mikrofon** | **2.7** | ✅ | Setup > EIN/AUS > Mikrofon (mit angeschlossenem DMS1) |
+| **LUMIX Flow v1.5+ Features** | **2.7** | ✅ | App-seitig |
+
+---
+
+## 3.3 EU-spezifische Einschränkungen
+
+Die EU-Variante der S5IIX unterscheidet sich von japanischen oder US-Versionen. Zwei Dinge sind wichtig zu wissen:
+
+### Aufnahmedauer — keine 30-Minuten-Grenze mehr
+
+Historisch hatten EU-Panasonic-Kameras ein 30-Minuten-Limit für Videoaufnahmen, weil sie sonst in der Zollklassifizierung als „Videokamera" statt „Fotokamera" eingestuft worden wären (= höhere Zölle). Bei der S5IIX **gilt das nicht mehr** — sie kann unbegrenzt aufnehmen, und der eingebaute Lüfter macht das auch praktisch möglich (siehe [Kapitel 5](thermal-management.md)).
+
+### ⚠ Streaming-Funktion: in EU-FW 2.2 entfernt
+
+Bei FW 2.2 (Januar 2025) hat Panasonic in **EU-Modellen** mehrere Streaming-relevante Funktionen **entfernt**:
+
+- **RTMP-Streaming** via Wi-Fi/USB-Tethering — die Kamera konnte vorher direkt zu YouTube/Facebook streamen, ohne PC dazwischen
+- **Wired LAN Streaming** (RTP/RTSP)
+- **WLAN-Bildtransfer zum PC**
+- Mehrere Wi-Fi-Sicherheits-Lockerungen (kein „ohne Verschlüsselung", kein TKIP, immer Passwort-Pflicht)
+
+**Was heißt das für uns?** Bei uns ist Streaming sowieso über OBS auf einem PC gelöst — die fehlende eingebaute RTMP-Funktion betrifft uns also nicht direkt. **Aber:** Falls man jemals auf die Idee käme, ohne PC direkt aus der Kamera zu streamen (z. B. für einen mobilen Einsatz), geht das mit unserer EU-FW nicht mehr. Stattdessen ginge nur der Umweg über die Apps **LUMIX Lab** (ab FW 2.2) oder **LUMIX Flow** (ab FW 2.4).
+
+### Systemfrequenz — immer PAL (50 Hz) in der EU
+
+Details zu diesem Thema in [Kapitel 6 — Videoeinstellungen](video-settings.md). Kurz:
+
+- **50,00 Hz (PAL)** ist Standard. Bildraten: 25p, 50p, 100p.
+- 24,00 Hz (CINEMA): 24p, 48p — möglich, für Streaming nicht relevant.
+- 59,94 Hz (NTSC): einstellbar, aber in der EU **wegen 50-Hz-Kunstlicht problematisch** (Flicker).
+
+---
+
+## 3.4 Was die S5IIX NICHT kann — häufige Missverständnisse
+
+Im Internet kursieren zu jeder Kamera Behauptungen, die nicht stimmen. Für die S5IIX die häufigsten:
+
+| Vermeintliches Feature | Status | Anmerkung |
+|---|---|---|
+| Interne RAW-Aufnahme | **Nicht vorhanden** | RAW gibt es nur über HDMI an einen externen Rekorder. |
+| 4K 120p mit vollem Sensor | **Nicht vorhanden** | 4K 120p geht nur mit APS-C-Crop (= ~1,5×-Tele-Effekt). |
+| ProRes RAW intern | **Nicht vorhanden** | Intern gibt es Apple ProRes 422 / 422 HQ, aber nicht ProRes RAW. |
+| Dual Native ISO bei Video | ✅ Vorhanden | Basis-ISOs: **640** und **4000**. Erklärt in [Kapitel 15 — Best Practices](../streaming/best-practices.md). |
+| IBIS + OIS Dual IS | ⚠ Eingeschränkt | „Dual I.S. 2" funktioniert nur mit kompatiblen Panasonic-L-Mount-Objektiven. Mit dem Samyang gibt es nur IBIS, nicht die Kombi. |
+| LAN-Streaming | Nur S5IIX-Modell | Die nicht-X-Variante S5II hat das nie gehabt. Bei S5IIX in EU zudem mit FW 2.2 entfernt (siehe oben). |
+| SSD-Aufnahme über USB-C | ✅ Vorhanden | Externe SSD per USB-C anschließbar — relevant für High-Bitrate-Aufnahmen. |
+
+---
+
+## 3.5 Firmware-Update-Prozess
+
+Schrittweise durchgehen — ein Firmware-Update kann bei Stromausfall die Kamera unbenutzbar machen.
+
+1. **Firmware herunterladen** von der Panasonic-Support-Seite (Link in Abschnitt 3.1).
+2. Datei auf eine **frisch in der Kamera formatierte SD-Karte** kopieren — ins **Wurzelverzeichnis** (nicht in einen Unterordner).
+3. Karte in **Slot 1** einlegen.
+4. Kamera einschalten, Akku **muss > 50 %** sein. Idealerweise zusätzlich ein USB-PD-Netzteil anschließen.
+5. **Setup-Menü → Sonstige → Firmware-Anz. → Update ausführen**
+6. Während des Updates **NICHT ausschalten**, **NICHT die Karte ziehen**, **NICHT den Akku entnehmen**. Es dauert mehrere Minuten.
+7. Nach Abschluss: zusätzlich **LUMIX Lab, LUMIX Sync, LUMIX Flow** und **LUMIX Tether** auf die jeweils neueste Version aktualisieren — sonst können App-Funktionen wegbrechen.
+
+### Begleit-Software (immer mit der Firmware mitziehen)
+
+| Software | Plattform | Zweck |
+|---|---|---|
+| LUMIX Lab | Smartphone | Bildbearbeitung, LUT-Transfer |
+| LUMIX Sync | Smartphone | Fernsteuerung, Bildtransfer |
+| LUMIX Flow | Smartphone | Workflow-Integration |
+| LUMIX Tether | PC (Win/Mac) | Fernsteuerung vom Computer |
+| LUMIX Webcam Software | PC (Win/Mac) | Kamera als USB-Webcam nutzen |
+
+---
+
+## 3.6 Vollständige Versionshistorie (Nachschlagewerk)
+
+> Hinweis: Diese Liste ist als Referenz gedacht. Für den normalen Betrieb reichen Abschnitte 3.1–3.5.
 
 ### Version 2.7 — 10. März 2026 `[VERIFIZIERT — installiert seit 2026-05-20]`
 
@@ -139,92 +262,3 @@ Quelle: https://av.jpn.support.panasonic.com/support/global/cs/dsc/download/ff/d
 - 6K 30p, 5.9K 30p, C4K/4K 60p, 4K 120p (APS-C Crop)
 - Apple ProRes 422 HQ / 422 intern
 - V-Log / V-Gamut vorinstalliert (kein Upgrade nötig, anders als S5II)
-
----
-
-## In FW 2.7 enthaltene Features (verifiziert via offizieller Changelog-Historie)
-
-Bei der installierten FW 2.7 sind alle Features bis einschließlich Version 2.7 enthalten:
-
-| Feature | Eingeführt mit FW | In 2.7 vorhanden | Menüpfad |
-|---|---|---|---|
-| Frame.io Camera to Cloud | 2.0 | ✅ | Setup > EIN/AUS > Frame.io |
-| Proxy-Aufnahme | 2.0 | ✅ | Videomenü > Bildformat > Proxy-Aufnahme |
-| SH PRE (Pre-Burst) | 2.0 | ✅ | Foto > Auslösermodus > SH PRE |
-| LEICA Monochrome | 2.1 | ✅ | Photo Style |
-| LUMIX Lab Support | 2.1 | ✅ | App-seitig |
-| DMW-XLR2 (kein 32-bit Float) | 2.1 | ✅ | XLR-Adapter anschließen |
-| 5GHz Wi-Fi | 2.1 | ✅ | Setup > Wi-Fi > Frequenzband |
-| Crop Zoom | 2.2 | ✅ | Foto/Video-Menü |
-| Hybrid Zoom | 2.2 | ✅ | Foto/Video-Menü |
-| MP4(Lite) | 2.2 | ✅ | Videomenü > Bildformat > Dateiformat |
-| Bildgröße XS | 2.2 | ✅ | Fotomenü > Bildgröße > XS |
-| Motiverkennung Flugzeug/Zug | 2.2 | ✅ | AF-Menü |
-| LUMIX Flow App | 2.4 | ✅ | Setup > EIN/AUS > LUMIX Flow |
-| Verschlusszeitbegrenzer | 2.4 | ✅ | Videomenü > Belichtung |
-| Fokusring als Control Ring | 2.4 | ✅ | Custom > Objektiv/Sonstige |
-| Blende F45–F90 | 2.4 | ✅ | Belichtung |
-| DJI Gimbal Bluetooth-Pairing | 2.4 | ✅ | Setup > Bluetooth |
-| **DMW-DMS1 Mikrofon** | **2.7** | ✅ | Setup > EIN/AUS > Mikrofon (mit angeschlossenem DMS1) |
-| **LUMIX Flow v1.5+ Features** | **2.7** | ✅ | App-seitig |
-
----
-
-## EU-spezifische Einschränkungen / Regionale Unterschiede
-
-### Aufnahmedauer
-- **Die S5IIX hat KEINE zeitliche Aufnahmebegrenzung** — der integrierte Lüfter ermöglicht unbegrenzte Aufnahmen
-- Historisch hatten EU-Panasonic-Kameras ein 30-Minuten-Limit (Zollklassifizierung als "Videokamera"). Dies gilt für die S5IIX **NICHT** mehr
-
-### Streaming-Funktion (nur S5IIX)
-- ⚠ **WICHTIG (EU):** Mit FW 2.2 (Januar 2025) wurden in **EU-Modellen** folgende Funktionen **entfernt**:
-  - **RTMP-Streaming via Wi-Fi/USB-Tethering**
-  - **Wired LAN Streaming (RTP/RTSP)**
-  - **WLAN-Bildtransfer zum PC**
-- Vor FW 2.2 (also FW 1.0–2.1): RTMP/RTMPS via Wi-Fi, LAN oder USB-Tethering verfügbar — bis zu FHD | 6M | 29.97p (H.264), YouTube/Facebook/RTMP generisch
-- **Ab FW 2.2 in EU:** Streaming nur noch via **LUMIX Lab App (Wireless IP Streaming, ab FW 2.2)** oder **LUMIX Flow App (ab FW 2.4)** möglich
-- ❓ Status auf der installierten FW 2.6: zu verifizieren, ob RTMP-Menü noch vorhanden ist (bei EU-Geräten, die ab 2.2 aktualisiert wurden, ist es entfernt)
-
-### Systemfrequenz in der EU
-- **50.00 Hz (PAL)** — Standard für Europa
-- Verfügbare Bildraten bei PAL: 25p, 50p, 100p
-- 24.00 Hz (CINEMA) ist ebenfalls verfügbar: 24p, 48p
-- **NTSC (59.94 Hz) kann ebenfalls eingestellt werden** — nötig, wenn NTSC-Livestreaming-Plattformen bessere Kompatibilität bieten
-
----
-
-## Funktionen, die NICHT existieren / häufige Missverständnisse
-
-| Funktion | Status | Anmerkung |
-|---|---|---|
-| Interne RAW-Aufnahme | NICHT vorhanden | RAW nur über HDMI an externen Rekorder |
-| 4K 120p Full Frame | NICHT vorhanden | 4K 120p nur mit APS-C Crop |
-| ProRes RAW intern | NICHT vorhanden | Nur Apple ProRes 422/422HQ intern |
-| Dual Native ISO bei Video | VORHANDEN | Basiswerte: ISO 640 / ISO 4000 |
-| IBIS + OIS Dual IS | EINGESCHRÄNKT | Nur mit kompatiblen Panasonic L-Mount Linsen (Dual I.S. 2) |
-| LAN-Streaming | NUR S5IIX | Über USB-LAN-Adapter oder direkt über Streaming-Funktion |
-| SSD Recording | VORHANDEN | Über USB-C an externe SSD |
-
----
-
-## Firmware-Update-Prozess
-
-1. Firmware von Panasonic-Support-Seite herunterladen
-2. Auf formatierte SD-Karte im Root-Verzeichnis kopieren
-3. Karte in Slot 1 einlegen
-4. Kamera einschalten, Akku muss >50% sein
-5. Setup-Menü > Sonstige > Firmware-Anz. > Update ausführen
-6. NICHT während des Updates ausschalten!
-7. Nach Update: LUMIX Lab, LUMIX Sync, LUMIX Flow und LUMIX Tether aktualisieren
-
----
-
-## Begleit-Software (immer mit Firmware updaten)
-
-| Software | Plattform | Zweck |
-|---|---|---|
-| LUMIX Lab | Smartphone | Bildbearbeitung, LUT-Transfer |
-| LUMIX Sync | Smartphone | Fernsteuerung, Bildtransfer |
-| LUMIX Flow | Smartphone | Workflow-Integration |
-| LUMIX Tether | PC (Win/Mac) | Fernsteuerung vom Computer |
-| LUMIX Webcam Software | PC (Win/Mac) | Kamera als USB-Webcam nutzen |

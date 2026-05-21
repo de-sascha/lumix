@@ -1,132 +1,138 @@
-# Stromversorgung & Standby-Vermeidung — Panasonic Lumix DC-S5IIX
+# Kapitel 4 — Stromversorgung und Standby
 
-## USB Power Delivery (USB-PD)
+> Teil II, Kapitel 4 des [S5IIX-Handbuchs](../../README.md). Voriges Kapitel: [3. Firmware-Stand](firmware-changelog.md). Nächstes Kapitel: [5. Thermomanagement und Lüfter](thermal-management.md).
 
-Die S5IIX unterstützt USB-PD über den USB-C-Anschluss. Das ermöglicht Dauerbetrieb bei gleichzeitigem Laden des eingelegten Akkus.
+## Worum geht es hier?
 
-### Technische Anforderungen
+Damit die Kamera einen ganzen Gottesdienst durchhält, müssen zwei Dinge stimmen:
 
-| Parameter | Wert |
+1. **Sie bekommt zuverlässig Strom** — nicht nur 70 Minuten aus einem Akku.
+2. **Sie schaltet sich nicht selbst ab.** Die S5IIX hat im Werks-Zustand eingebaute Spar-Modi, die die Kamera nach 5 Minuten Inaktivität ausschalten. Genau das ist uns im Mai 2026 mitten im Stream passiert ([Kapitel 16](standby-incident-2026-05.md)).
+
+Wer dieses Kapitel beachtet, hat damit zwei der größten Risiken eines Live-Einsatzes (leere Batterie, Auto-Off) erledigt.
+
+---
+
+## 4.1 Stromversorgung: drei Wege
+
+Die S5IIX kann auf drei Arten mit Strom versorgt werden. Wir nutzen **Variante A**.
+
+### Variante A — USB Power Delivery (empfohlen)
+
+Die Kamera hängt an einem USB-C-Netzteil und betrieben wird, gleichzeitig liegt im Akkufach ein voller Akku. Fällt das Netzteil aus (jemand stolpert über das Kabel), übernimmt der Akku **nahtlos** — wie eine kleine USV (unterbrechungsfreie Stromversorgung).
+
+```
+┌─────────────────┐     USB-C     ┌──────────────┐
+│ 30W USB-PD      │───────────────│ S5IIX        │
+│ Netzteil        │               │ (Akku BLK22  │
+│ (Steckdose)     │               │  eingelegt)  │
+└─────────────────┘               └──────────────┘
+```
+
+**Was ist „USB-PD"?** USB Power Delivery — ein Standard, mit dem ein USB-C-Netzteil mehr als die üblichen 5 V liefern kann. Die Kamera braucht **9 V bei 3 A** (= 27 W). Normale Handy-Ladegeräte können das oft nicht; man braucht ein PD-fähiges Netzteil.
+
+| Anforderung | Wert |
 |---|---|
-| USB-PD Profil | 9V / 3A (27W) Minimum |
-| Anschluss | USB-C (am Kameragehäuse) |
-| Verhalten | Kamera läuft über USB-PD, Akku wird gleichzeitig geladen |
-| Failover | Bei USB-Trennung nahtloser Wechsel auf Akku |
+| USB-PD Profil | mindestens 9 V / 3 A (27 W) |
+| Empfohlene Netzteil-Leistung | 30 W oder mehr |
+| Anschluss | USB-C am Kameragehäuse |
+| Kabel | USB-C-Kabel mit PD-Zertifizierung, möglichst kurz (≤ 1,5 m) |
 
-### Empfohlene Netzteile
+**Was passiert während des Betriebs?** Die Kamera läuft direkt aus dem Netzteil. Der eingelegte Akku wird parallel geladen — bei eingeschalteter Kamera langsamer als bei ausgeschalteter. Das ist normal.
 
-- Mindestens 30W USB-PD Netzteil mit 9V/3A Profil
-- Kurzse, hochwertige USB-C Kabel (zertifiziert für PD)
-- Beispiele: Anker Nano 30W, Apple 30W USB-C, RAVPower 30W PD
+**Was muss man wissen?**
+- **Akku muss eingelegt sein.** Die S5IIX läuft bei USB-PD nicht ohne Akku im Fach. (Anders als manche andere Kameras.)
+- **Nicht über USB-Hubs oder Tastatur-Ports.** Die liefern oft nicht stabil 9 V/3 A.
+- Bei sehr hoher Last (4K-Aufnahme, voll aufgedrehtem Lüfter) kann der Akku trotz Netzteil leicht entladen. Wenn das passiert, ist das Netzteil zu schwach.
 
-### Wichtige Hinweise aus dem Handbuch
+**Bewährte Netzteile:** Anker Nano 30 W, Apple 30 W USB-C, RAVPower 30 W PD.
 
-- Akku muss eingelegt sein (Kamera funktioniert NICHT ohne Akku über USB-PD)
-- Laden dauert bei eingeschalteter Kamera länger als bei ausgeschalteter
-- Nicht über USB-Hubs oder Tastatur-USB-Ports anschließen
-- Bei USB-PD-inkompatiblen Geräten: nur Stromversorgung, kein Laden
-- Akkustand kann trotz USB-PD unter bestimmten Bedingungen sinken (hohe Last)
+### Variante B — DC-Koppler (Dummy-Akku)
 
-## Standby/Sleep-Vermeidung
+Ein „DC-Koppler" ist ein Bauteil in Akku-Form, das in das Akkufach gesteckt wird und über ein Kabel direkt mit einem AC-Adapter verbunden ist. Panasonic-Bezeichnung: **DMW-DCC17**.
 
-### ⚠️ Bekannter Vorfall (Mai 2026)
+```
+┌─────────────────┐     DC        ┌──────────────┐
+│ AC-Adapter +    │───────────────│ S5IIX        │
+│ DC-Koppler      │               │ (kein Akku!) │
+│ DMW-DCC17       │               │              │
+└─────────────────┘               └──────────────┘
+```
 
-Während eines Gottesdienst-Streams ist die S5IIX unerwartet ausgegangen. Diagnose ergab: **Ruhemodus war auf 5 Min aktiv**. Die Kamera hat HDMI-Out alleine NICHT als Aktivität erkannt und nach 5 Min Inaktivität abgeschaltet — entgegen der Handbuch-Aussage, dass HDMI-Out den Standby verhindern soll.
+**Vorteil:** Garantierte unbegrenzte Laufzeit, kein Akku der warm wird.
 
-**Konsequenz:** ALLE Standby-Trigger explizit auf AUS setzen, dem Handbuch nicht blind vertrauen.
+**Nachteil:** **Kein Failover.** Bei Stromausfall geht die Kamera sofort aus — es gibt keinen Akku, der einspringt. Für Live-Streaming **nicht empfohlen**, deshalb nutzen wir Variante A.
 
-### Kritische Einstellungen (verifiziert FW 2.6, deutsches Menü)
+### Variante C — Battery Grip DMW-BGS5
 
-Menü-Pfad: **MENU → 🔧 Setup → EIN/AUS → Sparmodus**
+Ein Zusatzgriff, der einen zweiten BLK22-Akku aufnimmt. Verdoppelt die Akku-Laufzeit auf etwa 2,5–3 Stunden HDMI-Output.
 
-| Einstellung | Standard (Werk) | Empfehlung Streaming | Begründung |
+**Nachteil:** Es gibt kein USB-PD-Passthrough — wenn man USB-PD nutzen will, muss das USB-Kabel direkt am Kameragehäuse stecken, nicht am Griff. Für unser Setup also kaum sinnvoll.
+
+---
+
+## 4.2 Standby/Sleep deaktivieren
+
+### Warum das wichtig ist
+
+Die S5IIX hat **mehrere unabhängige Spar-Mechanismen**, die jeweils eigenständig die Kamera ausschalten können. Im Werks-Zustand sind sie alle aktiv. Ergebnis: Die Kamera schaltet sich nach wenigen Minuten Stille selbst aus — auch wenn sie ein HDMI-Signal sendet.
+
+Das offizielle Handbuch behauptet, HDMI-Output deaktiviere die Sparmodi automatisch. **In der Praxis stimmt das nicht zuverlässig.** Bei uns hat genau dieses Verhalten im Mai 2026 zum Stream-Abbruch geführt (siehe [Kapitel 16](standby-incident-2026-05.md)).
+
+**Konsequenz:** Wir verlassen uns nicht aufs Handbuch — wir schalten **alle** Spar-Trigger explizit aus.
+
+### Die Einstellungen
+
+**Menü-Pfad:** `MENU → 🔧 Setup → EIN/AUS → Sparmodus`
+
+| Einstellung | Werks-Default | Unser Wert | Warum |
 |---|---|---|---|
-| **Ruhemodus** | 5 Min | **AUS** | Hauptursache des Mai-2026-Vorfalls. Schaltet Kamera komplett ab. |
-| **Ruhemodus (Wi-Fi)** | EIN | **AUS** | Greift zusätzlich auch mit Wi-Fi-Verbindung. |
-| **Sucher (LVF)** | 5 Min | **AUS** | Wir nutzen LCD/HDMI, nicht den Sucher — sicherheitshalber AUS. |
-| **Energiespar-Sucheraufn. → Zeit bis zur Ruhe** | — | **OFF** | Verhindert Standby bei eingeklapptem LCD. |
-| **Ruhe-Modus Aktivierung** | Control Panel | Control Panel | Reine Anzeige-Option, mit Ruhemodus=AUS irrelevant. |
+| **Ruhemodus** | 5 Min | **AUS** | Hauptursache des Mai-2026-Vorfalls — schaltet die Kamera komplett ab. |
+| **Ruhemodus (Wi-Fi)** | EIN | **AUS** | Zweiter unabhängiger Trigger; greift auch, wenn Wi-Fi an ist. |
+| **Sucher (LVF)** | 5 Min | **AUS** | „LVF" = Live View Finder, der elektronische Sucher. Wir nutzen ihn nicht — sicherheitshalber AUS. |
+| **Energiespar-Sucheraufn. → Zeit bis zur Ruhe** | — | **OFF** | Greift, wenn das LCD eingeklappt ist. |
+| **Ruhe-Modus Aktivierung** | Control Panel | Control Panel | Reine Anzeige-Option; mit Ruhemodus=AUS ohnehin egal. |
 
-### Power Save Mode ist AUTOMATISCH DEAKTIVIERT bei (laut Handbuch):
+> **Wichtig:** Diese Schalter sind unabhängig. Es reicht **nicht**, einen davon auszuschalten — alle drei (Ruhemodus, Ruhemodus Wi-Fi, Sucher LVF) müssen einzeln auf AUS.
 
-- Während Videoaufnahme/Videowiedergabe
-- Bei PC-Verbindung
-- Bei Time Lapse Shot
-- Bei Stop Motion Animation (Auto Shooting)
-- Bei Live View Composite
-- Bei Focus Transition
-- Während Slide Show
-- **Während HDMI-Output für Aufnahme** ← in der Praxis NICHT zuverlässig (s. Vorfall oben!)
+### Was das Handbuch zur HDMI-Frage sagt — und warum wir trotzdem alles ausschalten
 
-**Wichtig:** Trotz Handbuch-Aussage hat HDMI-Output die Kamera in der Praxis NICHT zuverlässig wach gehalten. Standby-Modi explizit ausschalten ist Pflicht, nicht optional.
+Laut Panasonic-Handbuch wird der Sparmodus „automatisch deaktiviert" während:
 
-### Doppel-Sicherung: Internes Backup-Recording
+- Videoaufnahme/Videowiedergabe
+- PC-Verbindung
+- Time-Lapse, Stop-Motion, Live View Composite, Focus Transition, Slide Show
+- **HDMI-Output für Aufnahme** ← in der Praxis nicht zuverlässig
 
-Zusätzlich zur HDMI-Ausgabe ein **internes FHD-Recording auf SD-Karte** mitlaufen lassen:
+Das letzte ist genau unser Anwendungsfall, und genau dort hat es bei uns versagt. Wir gehen davon aus, dass eine externe Capture-Karte (Blackmagic DeckLink) der Kamera nicht das Signal gibt, das sie als „aktive HDMI-Aufnahme" interpretiert. Konsequenz wie oben: Spar-Modi explizit aus.
 
-- Kamera ist „beschäftigt" — Standby-Trigger greifen unter keinen Umständen
-- Backup-Video falls der Stream-PC abstürzt
-- Bei FHD 25p H.264 thermisch unkritisch (3-5h+ stabil)
+---
 
-## Empfohlenes Power-Setup für Kirchenstreaming
+## 4.3 Doppel-Sicherung: internes Backup-Recording
 
-### Primär: USB-PD + Akku als USV
+Zusätzlich zur HDMI-Ausgabe lassen wir parallel eine **interne Aufnahme** auf SD-Karte mitlaufen. Das hat zwei Vorteile gleichzeitig:
 
-```
-┌─────────────────┐     USB-C     ┌─────────────┐
-│ 30W USB-PD      │───────────────│ S5IIX       │
-│ Netzteil        │               │ (Akku BLK22 │
-│ (an Steckdose)  │               │  eingelegt)  │
-└─────────────────┘               └─────────────┘
-```
+1. **Die Kamera ist „aktiv beschäftigt".** Während eine Videoaufnahme läuft, greifen die Standby-Trigger garantiert nicht — auch in unserem ungünstigen HDMI-Capture-Szenario.
+2. **Wir haben ein Backup-Video.** Wenn der Streaming-PC abstürzt oder das Internet ausfällt, ist der Gottesdienst trotzdem aufgezeichnet.
 
-**Vorteile:**
-- Unbegrenzte Laufzeit
-- Akku als automatische USV (jemand stolpert über Kabel → kein Ausfall)
-- Ein voller BLK22 gibt ca. 70-90 Min. Video-Backup
+Empfohlene Backup-Einstellung: **FHD 25p H.264 LongGOP (≈ 100 Mbps)**. Thermisch unkritisch, läuft auch über mehrere Stunden stabil. Details zu den Format-Codes in [Kapitel 6](video-settings.md).
 
-### Alternative: DC-Koppler DMW-DCC17 (Dummy-Akku)
+---
 
-```
-┌─────────────────┐     DC        ┌─────────────┐
-│ AC-Adapter +    │───────────────│ S5IIX       │
-│ DC-Koppler      │               │ (kein Akku) │
-│ DMW-DCC17       │               │             │
-└─────────────────┘               └─────────────┘
-```
+## 4.4 Checkliste vor dem Gottesdienst
 
-**Vorteile:**
-- Garantiert unbegrenzte Laufzeit
-- Kein Akku-Wärme-Problem
+Strikt von oben nach unten abarbeiten — die letzten Punkte sind genauso wichtig wie die ersten.
 
-**Nachteile:**
-- KEIN Failover bei Stromausfall → Kamera schaltet sofort ab!
-- Batteriefach schließt nicht komplett (kosmetisch)
-
-### Dritte Option: Battery Grip DMW-BGS5
-
-- Nimmt zweiten BLK22-Akku auf
-- Kein USB-PD-Passthrough (USB muss an Kameragehäuse)
-- 2x BLK22 ≈ 2,5-3 Stunden HDMI-Output
-- Nur sinnvoll wenn USB-PD nicht möglich ist
-
-## Empfehlung
-
-**USB-PD mit eingestecktem vollgeladenem Akku** — die zuverlässigste Lösung:
-- Dauerbetrieb garantiert
-- Automatisches Failover bei Stromunterbrechung
-- Prüfen ob Akku auf >50% bleibt während des Betriebs (sonst stärkeres Netzteil verwenden)
-
-## Checkliste vor dem Gottesdienst
-
-- [ ] USB-PD Netzteil angeschlossen und Kamera zeigt Lade-Symbol
-- [ ] Akku BLK22 voll geladen eingelegt
-- [ ] **Ruhemodus: AUS** (nicht 5 Min!)
-- [ ] **Ruhemodus (Wi-Fi): AUS**
-- [ ] **Sucher (LVF): AUS**
-- [ ] Energiespar-Sucheraufn. → Zeit bis zur Ruhe: OFF
-- [ ] Lüfter Modus: AUTO2
-- [ ] Temperaturmanagement: HIGH (Setup → Monitor → Temperaturmgmt)
+- [ ] USB-PD-Netzteil eingesteckt, Kamera zeigt das Lade-Symbol
+- [ ] Akku BLK22 voll geladen im Akkufach
+- [ ] Ruhemodus: **AUS** (nicht 5 Min!)
+- [ ] Ruhemodus (Wi-Fi): **AUS**
+- [ ] Sucher (LVF): **AUS**
+- [ ] Energiespar-Sucheraufn. → Zeit bis zur Ruhe: **OFF**
+- [ ] Lüfter Modus: AUTO2 *(siehe [Kapitel 5](thermal-management.md))*
+- [ ] Temperaturmanagement: HIGH *(siehe [Kapitel 5](thermal-management.md))*
 - [ ] Internes FHD-Backup-Recording aktiv (Doppel-Sicherung)
-- [ ] HDMI-Kabel fest angeschlossen
-- [ ] **15-Min-Test:** Kamera aufbauen, nicht anfassen, prüfen ob sie an bleibt
+- [ ] HDMI-Kabel fest angeschlossen, Kabelhalter gesichert
+- [ ] **15-Minuten-Test:** Kamera aufbauen, **nicht anfassen**, prüfen ob sie an bleibt
+
+→ Wenn der 15-Minuten-Test versagt: zurück zu 4.2 und alle drei Schalter prüfen. Erst weitermachen, wenn die Kamera sicher wach bleibt.

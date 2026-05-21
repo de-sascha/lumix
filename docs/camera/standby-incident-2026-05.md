@@ -1,26 +1,49 @@
-# Vorfall-Bericht: Unerwartetes Abschalten der S5IIX im Stream
+# Kapitel 16 — Vorfall: Kamera ging im Stream aus (Mai 2026)
 
-**Datum:** Mai 2026
-**Firmware:** 2.6
-**Setup:** S5IIX, HDMI-Out auf OBS-PC, Kirchen-Streaming
+> Teil V, Kapitel 16 des [S5IIX-Handbuchs](../../README.md). Verwandt: [4. Stromversorgung und Standby](power-management.md).
 
-## Symptom
+## Worum geht es hier?
 
-Die Kamera ging während eines Gottesdienst-Streams unerwartet aus. Kein Vorwarn-Symbol (kein Thermometer), keine erkennbare Ursache am Kabel oder Netzteil.
+Im Mai 2026 hat sich die S5IIX **mitten im Hosanna-Gottesdienst-Stream selbst abgeschaltet**. Kein erkennbares Problem an Strom, Kabel oder Hitze — die Kamera war einfach aus. Dieses Kapitel dokumentiert den Vorfall samt Diagnose und der daraus abgeleiteten Standard-Konfiguration. **Damit das Gleiche nicht noch mal passiert.**
 
-## Diagnose
+> **Zusammenfassung in einem Satz:** Der Werks-Default des Ruhemodus (5 Min) hat die Kamera trotz aktiver HDMI-Ausgabe ausgeschaltet — entgegen der Aussage des Panasonic-Handbuchs.
 
-Beim systematischen Durchgehen der Energiespar-Einstellungen stellte sich heraus:
+---
 
-| Einstellung | Wert zum Zeitpunkt des Vorfalls |
+## 16.1 Eckdaten
+
+| Feld | Wert |
+|---|---|
+| Datum | Mai 2026 |
+| Firmware-Stand | 2.6 |
+| Setup zum Zeitpunkt | S5IIX → HDMI → DeckLink → OBS-PC |
+| Einsatz | Kirchen-Streaming Hosanna |
+
+## 16.2 Was passiert ist
+
+Die Kamera ging während des Streams **unerwartet aus**. Es gab kein Vorwarn-Symbol, insbesondere kein Thermometer-Symbol — also keine Hitze-Warnung. Kabel waren gesteckt, USB-PD-Netzteil lief. Trotzdem: schwarzes Bild im Stream, Kamera komplett aus.
+
+## 16.3 Diagnose
+
+Die Diagnose erfolgte durch systematisches Durchgehen der Energiespar-Einstellungen. Diese Werte waren zum Zeitpunkt des Vorfalls aktiv:
+
+| Einstellung | Wert beim Vorfall |
 |---|---|
 | Ruhemodus | **5 Min** (Werks-Default) |
 | Ruhemodus (Wi-Fi) | EIN |
 | Sucher (LVF) | 5 Min |
 
-Die Kamera erkennt **HDMI-Output alleine NICHT zuverlässig als „Aktivität"**, obwohl das Handbuch das Gegenteil suggeriert. Wenn die Kamera auf dem Stativ steht, niemand sie anfasst und keine interne Aufnahme läuft, greift der Ruhemodus nach 5 Minuten und schaltet die Kamera ab.
+### Was ist tatsächlich schiefgelaufen?
 
-## Lösung — Vorher / Nachher
+Das Panasonic-Handbuch behauptet, der Ruhemodus werde während HDMI-Ausgabe für Aufnahme **automatisch deaktiviert**. In unserem Setup hat das nicht funktioniert: Die Kamera hat HDMI-Output **alleine nicht zuverlässig als „aktive Aufnahme"** erkannt. Da sie zudem auf dem Stativ stand, niemand sie anfasste und keine interne Aufnahme lief, hat der Ruhemodus nach 5 Minuten zugeschlagen und die Kamera abgeschaltet.
+
+**Die wahrscheinliche technische Ursache:** Eine externe Capture-Karte wie die DeckLink sendet der Kamera offenbar nicht das Signal, das die Kamera als „aktive HDMI-Aufnahme" interpretieren würde. Die Kamera „sieht" sich also selbst als untätig — und folgt brav ihrem Werks-Default.
+
+---
+
+## 16.4 Lösung — Vorher / Nachher
+
+Alle Spar-Trigger einzeln **explizit auf AUS**, plus Temperaturmanagement auf HIGH:
 
 | Einstellung | Vorher | Nachher | Begründung |
 |---|---|---|---|
@@ -30,29 +53,39 @@ Die Kamera erkennt **HDMI-Output alleine NICHT zuverlässig als „Aktivität"**
 | Energiespar-Sucheraufn. → Zeit bis zur Ruhe | OFF | OFF | War schon korrekt |
 | Ruhe-Modus Aktivierung | Control Panel | Control Panel | Mit Ruhemodus=AUS irrelevant |
 | Lüfter Modus | AUTO2 | AUTO2 | Bereits optimal |
-| **Temperaturmanagement** | STANDARD | **HIGH** | Verlängert Aufnahmezeit, Kamera darf wärmer werden |
+| **Temperaturmanagement** | STANDARD | **HIGH** | Verlängert die zulässige Aufnahmezeit deutlich, damit das nicht der nächste Stolperstein wird |
 
-## Lessons Learned
-
-1. **Werks-Defaults sind nicht Streaming-tauglich.** Ruhemodus=5 Min ist der Standard und muss aktiv abgeschaltet werden.
-2. **Handbuch-Aussagen kritisch prüfen.** Das Handbuch behauptet, HDMI-Output deaktiviere Power Save automatisch. In der Praxis stimmt das nicht zuverlässig.
-3. **Mehrere Trigger gleichzeitig.** „Ruhemodus", „Ruhemodus Wi-Fi" und „Sucher LVF" sind unabhängig — alle müssen einzeln auf AUS.
-4. **Doppel-Sicherung sinnvoll.** Internes FHD-Backup-Recording hält die Kamera „beschäftigt" UND liefert ein Backup-Video.
-
-## Verifikations-Tests (nach der Korrektur)
-
-- [ ] **Mini-Test (15 Min):** Kamera aufbauen, nicht anfassen, prüfen ob sie an bleibt
-- [ ] **Hitzetest (2-3h):** Dauerlauf in Streaming-Konfiguration, Thermik beobachten
-- [ ] **Real-Test:** Erster Gottesdienst nach Korrektur — beobachten
-
-## Konfigurations-Pfad zur Schnellprüfung
+### Schnellprüfung — wo finde ich diese Einstellungen?
 
 ```
 MENU → 🔧 Setup → EIN/AUS → Sparmodus
 ```
 
-Dort alle Werte gegen die „Nachher"-Spalte oben abgleichen.
+Dort alle Werte gegen die „Nachher"-Spalte abgleichen.
 
-## Confidence
+---
 
-⚠️ Hoch — Vorfall reproduzierbar erklärbar durch Werks-Default. Die FW 2.6 zeigt das Verhalten konsistent. Korrektur in der Praxis noch zu verifizieren (15-Min-Test ausstehend).
+## 16.5 Lessons Learned
+
+Vier Erkenntnisse aus dem Vorfall, die in unsere Standard-Konfiguration eingeflossen sind:
+
+1. **Werks-Defaults sind nicht Streaming-tauglich.** Ruhemodus = 5 Min ist Auslieferungszustand und muss aktiv abgeschaltet werden.
+2. **Handbuch-Aussagen kritisch prüfen.** Der Satz „HDMI-Output deaktiviert Power Save automatisch" stimmt in unserem Setup nicht zuverlässig. Wir verlassen uns nicht auf solche Aussagen, sondern schalten lieber alles selbst aus.
+3. **Mehrere Trigger gleichzeitig.** „Ruhemodus", „Ruhemodus Wi-Fi" und „Sucher LVF" sind drei unabhängige Schalter. Es reicht nicht, einen davon auszuschalten — alle drei müssen einzeln auf AUS.
+4. **Doppel-Sicherung lohnt sich.** Eine zusätzlich mitlaufende interne FHD-Aufnahme hält die Kamera „beschäftigt" und liefert obendrein ein Backup-Video. Mehr dazu in [Kapitel 4.3](power-management.md#43-doppel-sicherung-internes-backup-recording).
+
+---
+
+## 16.6 Verifikations-Tests nach der Korrektur
+
+So wird geprüft, ob die Korrektur wirklich greift:
+
+- [ ] **Mini-Test (15 Min):** Kamera fertig konfiguriert aufbauen, **nicht anfassen**, prüfen ob sie die ganzen 15 Minuten an bleibt.
+- [ ] **Hitzetest (2–3 h):** Dauerlauf in Streaming-Konfiguration, Thermometer-Symbol beobachten. *(Schon bestanden am 2026-05-21: 2× 3,5 h 4K-Daueraufnahme, siehe [Kapitel 5.5](thermal-management.md#55-praxistest-empfohlen--bevor-es-live-geht).)*
+- [ ] **Real-Test:** Erster Gottesdienst nach der Korrektur — beobachten, ob die Kamera durchhält.
+
+---
+
+## 16.7 Confidence
+
+**Hoch** — der Vorfall ist reproduzierbar erklärbar durch den Werks-Default. Die FW 2.6 zeigte das Verhalten konsistent. Unter FW 2.7 ist das Verhalten technisch identisch, da am Sparmodus-System nichts geändert wurde. Die finale Bestätigung im Real-Einsatz steht zum Zeitpunkt der letzten Aktualisierung dieses Kapitels noch aus.

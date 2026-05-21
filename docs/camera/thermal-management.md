@@ -1,72 +1,112 @@
-# Thermomanagement & Lüfter — Panasonic Lumix DC-S5IIX
+# Kapitel 5 — Thermomanagement und Lüfter
 
-## Übersicht
+> Teil II, Kapitel 5 des [S5IIX-Handbuchs](../../README.md). Voriges Kapitel: [4. Stromversorgung und Standby](power-management.md). Nächstes Kapitel: [6. Videoeinstellungen](video-settings.md).
 
-Die S5IIX verfügt über einen integrierten aktiven Kühllüfter — ein entscheidendes Unterscheidungsmerkmal zu den meisten anderen Kameras. Der Lüfter sitzt unter dem Suchergehäuse und ermöglicht zeitlich unbegrenzte Videoaufnahmen.
+## Worum geht es hier?
 
-## Lüfter-Modi
+Kameras werden bei langen Videoaufnahmen warm. Bei vielen spiegellosen Kameras führt das nach 20–40 Minuten zu einer Notabschaltung — sehr schlechte Eigenschaft für Live-Streaming.
 
-Einstellung: **Setup-Menü > EIN/AUS > Lüfter Modus**
+Die S5IIX hat als eine der wenigen spiegellosen Kameras einen **eingebauten aktiven Lüfter** (sitzt unter dem Suchergehäuse). Damit kann sie theoretisch *unbegrenzt* aufnehmen. „Theoretisch" deshalb, weil zwei Einstellungen passen müssen: **Lüfter-Modus** und **Temperaturmanagement**. Dieses Kapitel erklärt beide und gibt die für unseren Streaming-Einsatz richtige Kombination.
 
-| Modus | Verhalten | Empfehlung |
+> **Bisher in der Praxis bestätigt:** 2× 3,5 Stunden 4K-Daueraufnahme ohne Probleme (Hitzetest am 2026-05-21). Streaming-Einsatz selbst ist auch unkritisch.
+
+---
+
+## 5.1 Lüfter-Modus
+
+**Menü-Pfad:** `Setup-Menü → EIN/AUS → Lüfter Modus`
+
+Der Lüfter-Modus regelt, **wann** und **wie schnell** der Lüfter läuft. Sechs Modi stehen zur Auswahl:
+
+| Modus | Verhalten | Für uns geeignet? |
 |---|---|---|
-| **AUTO1** | Lüfter startet proaktiv früh, priorisiert Kühlung | Für anspruchsvolle Formate (4K 60p, 4:2:2 10-Bit) |
-| **AUTO2** | Lüfter startet nur bei steigender Temperatur | **Empfohlen für Kirchenstreaming** — guter Kompromiss |
-| **FAST** | Lüfter läuft immer mit hoher Geschwindigkeit | Deutlich hörbar, für Streaming mit externem Mikrofon irrelevant |
-| **NORMAL** | Mittlere Drehzahl | Leises Rauschen, kaum auf Tonspur hörbar |
-| **SLOW** | Niedrige Drehzahl | Praktisch unhörbar, begrenzte Kühlleistung |
-| **OFF** | Lüfter deaktiviert | **NUR für Fotomodus** — NICHT für Video/Streaming verwenden! |
+| **AUTO1** | Lüfter startet früh und proaktiv, Kühlung hat Vorrang. | Nur bei extremen Formaten (z. B. 4K 60p ALL-Intra). |
+| **AUTO2** | Lüfter startet erst, wenn die Temperatur tatsächlich steigt. | **Empfehlung für Hosanna** — guter Kompromiss. |
+| **FAST** | Lüfter läuft permanent auf hoher Drehzahl. | Hörbar; nur sinnvoll, wenn das Mikrofon weit weg ist. |
+| **NORMAL** | Lüfter läuft permanent auf mittlerer Drehzahl. | Leises Rauschen. |
+| **SLOW** | Lüfter läuft permanent auf niedriger Drehzahl. | Praktisch unhörbar, aber begrenzte Kühlleistung. |
+| **OFF** | Lüfter aus. | **Nicht für Video!** Nur Foto. |
 
-### Empfehlung für Kirchenstreaming
+### Empfehlung für Hosanna: AUTO2
 
-**AUTO2** — Der Lüfter springt nur an, wenn die Temperatur steigt. Da in einer klimatisierten Kirche (18-25°C) die Temperatur typischerweise kein Problem darstellt, läuft der Lüfter selten oder gar nicht.
+Begründung:
+- Der Gemeindesaal ist klimatisiert, typisch 18–25 °C. In diesem Bereich wird die S5IIX gar nicht so warm, dass der Lüfter überhaupt anspringen muss.
+- Mit AUTO2 ist die Kamera die meiste Zeit lautlos — der Lüfter startet nur, wenn er gebraucht wird.
+- Sollte er doch starten: Wir nutzen das **Kamera-Audio gar nicht** (das Mikrofon hängt am Audio-Interface, nicht an der Kamera). Lüftergeräusch landet also nie auf der Aufnahme.
 
-Wenn ein externes Mikrofon weit genug entfernt ist (>1-2m), ist selbst der Modus FAST unhörbar auf der Aufnahme. Da bei HDMI-Output das Kamera-Audio ohnehin nicht verwendet wird, ist Lüftergeräusch vollkommen irrelevant.
+Praktisch heißt das: AUTO2 reicht für unser Setup. FAST/NORMAL wären nur nötig, wenn man die Kamera in heißer Umgebung über viele Stunden quälen würde.
 
-## Temperaturmanagement-Einstellung
+---
 
-Einstellung: **Setup-Menü > Monitor/Display 1 > Temperaturmanagement**
+## 5.2 Temperaturmanagement
+
+**Menü-Pfad:** `Setup-Menü → Monitor/Display 1 → Temperaturmanagement`
+
+Diese Einstellung legt fest, **wie heiß die Kamera werden darf, bevor sie sich abschaltet**.
 
 | Option | Verhalten |
 |---|---|
-| **STANDARD** | Kamera wird direkt angehalten, wenn Temperatur kritisch steigt |
-| **HIGH** | Kamera darf verhältnismäßig warm werden — verlängert Aufnahmezeit |
+| **STANDARD** | Sobald die interne Temperatur eine konservative Schwelle erreicht, **stoppt die Aufnahme sofort**. |
+| **HIGH** | Die Kamera darf deutlich wärmer werden. Aufnahme läuft weiter, ggf. mit Warnsymbol. |
 
-### Empfehlung für Kirchenstreaming
+### Empfehlung für Hosanna: HIGH
 
-**HIGH** — Diese Einstellung ist essenziell für Langzeit-Streaming. Die Kamera wird spürbar wärmer, was aber bei HDMI-Output auf einem Stativ kein Problem darstellt (man hält sie nicht in der Hand).
+Begründung:
+- Auf STANDARD könnte die Kamera nach 1–2 Stunden Streaming ohne erkennbaren Grund anhalten — fatal mitten im Gottesdienst.
+- HIGH verlängert die zulässige Aufnahmezeit erheblich.
+- Die Kamera sitzt auf dem Stativ, niemand fasst sie an. Dass sie warm wird, stört in dieser Konfiguration niemanden.
 
-## Wärme-Reduktions-Maßnahmen
+> **Achtung:** HIGH heißt nicht „beliebig heiß". Bei kritischer Temperatur erscheint ein Warnsymbol auf dem Display. Wenn das auftaucht: Aufnahme nach Möglichkeit beenden, Kamera abkühlen lassen.
+
+---
+
+## 5.3 Wärme-Reduktion: was hilft sonst noch?
+
+Wenn man trotz AUTO2 + HIGH die Kamera weiter entlasten möchte, helfen folgende Maßnahmen — sortiert nach Wirkung:
 
 | Maßnahme | Wirkung |
 |---|---|
-| HDMI-Output OHNE interne Aufnahme | **Größte Einzelmaßnahme** — drastisch weniger Wärme |
-| 1080p statt 4K über HDMI ausgeben | Weniger Prozessorlast, weniger Wärme |
-| 25p statt 50p verwenden | Geringere Prozessorlast |
-| IBIS ausschalten (Stativ!) | Leichte Wärmereduktion |
-| LCD aufgeklappt lassen | Wirkt als zusätzliche Kühlfläche |
-| Kein Cage/Gehäuse, das Lüftung blockiert | Luftzirkulation nicht behindern! |
-| Kein direkte Sonneneinstrahlung auf Kamera | Offensichtlich, aber wichtig bei Outdoor-Events |
+| **Nur HDMI-Ausgabe, keine interne Aufnahme** | Größte Einzelmaßnahme. Encoder muss dann fast nichts tun. *(Aber: wir nutzen interne FHD-Backup-Aufnahme als Ruhemodus-Schutz, siehe [Kapitel 4.3](power-management.md#43-doppel-sicherung-internes-backup-recording).)* |
+| **1080p statt 4K über HDMI ausgeben** | Weniger Prozessorlast. |
+| **25p statt 50p** | Halbe Prozessorlast. |
+| **IBIS ausschalten** | Auf dem Stativ ohnehin nicht nötig; spart etwas Sensor-Wärme. „IBIS" = In-Body Image Stabilizer, der Sensor-Bildstabilisator. |
+| **LCD aufgeklappt lassen** | Wirkt als zusätzliche Kühlfläche. Für unseren *Stresstest* klappen wir es bewusst ein, um die Kamera zu fordern; im Live-Einsatz lieber aufklappen. |
+| **Cage/Gehäuse, das die Lüftung blockiert, vermeiden** | Luftzirkulation muss frei sein. |
+| **Keine direkte Sonneneinstrahlung** | Bei Outdoor-Events offensichtlich, in der Kirche selten ein Thema. |
 
-## Praxistest-Empfehlung
+---
 
-Vor dem ersten Live-Einsatz: Kamera mit finaler Konfiguration mindestens **60 Minuten** laufen lassen und Temperatur beobachten. Die S5IIX sollte bei:
-- 25p FHD HDMI-Output + AUTO2 Lüfter + klimatisierter Raum
-- **unbegrenzt** laufen können (3+ Stunden bestätigt)
+## 5.4 Warnsignale erkennen
 
-## Warnsignale
+Auf dem Display der Kamera kann ein **Thermometer-Symbol** erscheinen. Bedeutung:
 
-- Thermometer-Symbol auf dem Display = Kamera nähert sich Grenze
-- Bei "STANDARD"-Temperaturmanagement: Kamera schaltet ab!
-- Bei "HIGH": Kamera arbeitet weiter, zeigt aber Warnung
+- **Symbol erscheint:** Kamera nähert sich der Temperaturgrenze.
+- Bei **Temperaturmanagement = STANDARD**: kurz darauf Aufnahme-Stopp.
+- Bei **Temperaturmanagement = HIGH**: Kamera arbeitet weiter, hält die Warnung nur sichtbar.
 
-## Zusammenfassung für Kirchenstreaming
+Wenn das Symbol im Live-Einsatz auftaucht: ruhig bleiben, weiterlaufen lassen. Nach dem Stream: Lüfter-Modus überdenken, ggf. von AUTO2 auf NORMAL umstellen, oder Raumtemperatur prüfen.
+
+---
+
+## 5.5 Praxistest empfohlen — bevor es live geht
+
+Vor dem ersten echten Live-Einsatz mit einer neuen Konfiguration:
+
+- Kamera in der finalen Konfiguration aufbauen (HDMI-Output, Lüfter AUTO2, Temperaturmgmt HIGH)
+- **Mindestens 60 Minuten** durchlaufen lassen, idealer 2–3 Stunden
+- Beobachten: erscheint ein Thermometer-Symbol? Hält sie wirklich durch?
+
+Ergebnis vom 2026-05-21: 2× 3,5 Stunden 4K-Daueraufnahme **bestanden**. Streaming-Last allein ist deutlich geringer als reine 4K-Aufnahme; sollte also problemlos laufen.
+
+---
+
+## 5.6 Zusammenfassung Hosanna-Setup
 
 ```
 Lüfter Modus:           AUTO2
-Temperaturmanagement:    HIGH
-Interne Aufnahme:        AUS (oder nur FHD als Backup)
-IBIS:                    AUS (Stativ)
-LCD:                     Aufgeklappt
-HDMI-Output:             Bevorzugt 1080p25 oder 4K25
+Temperaturmanagement:   HIGH
+Interne Aufnahme:       FHD 25p H.264 (Backup, siehe Kapitel 4.3)
+IBIS:                   AUS (Stativ)
+LCD:                    Aufgeklappt
+HDMI-Output:            4K25 oder 1080p25
 ```
